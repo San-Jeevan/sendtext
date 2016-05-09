@@ -81,37 +81,63 @@ namespace DrawerLayout_V7_Tutorial
         public override StartCommandResult OnStartCommand(Intent intent, StartCommandFlags flags, int startId)
         {
 
-            _isGooglePlayServicesInstalled = IsGooglePlayServicesInstalled();
 
-            if (_isGooglePlayServicesInstalled)
+            hubConnection = new HubConnection("http://snuskelabben.cloudapp.net:8022");
+            hubProxy = hubConnection.CreateHubProxy("GpsHub");
+            hubProxy.On<string>("UpdateChatMessage", OnSignalRMessage);
+            hubConnection.StateChanged += HubConnection_StateChanged;
+            hubConnection.Start().ContinueWith(task =>
             {
-                // pass in the Context, ConnectionListener and ConnectionFailedListener
-                apiClient = new GoogleApiClient.Builder(this, this, this)
-                    .AddApi(LocationServices.API).Build();
+                if (task.IsFaulted)
+                {
+                    Console.WriteLine("Failed to start: {0}", task.Exception.GetBaseException());
+                }
+                else
+                {
+                    Console.WriteLine("Success! Connected with client connection id {0}", hubConnection.ConnectionId);
+                    // Do more stuff here
+                }
+            });
 
-                // generate a location request that we will pass into a call for location updates
-                locRequest = new LocationRequest();
-                apiClient.Connect();
-                hubConnection = new HubConnection("http://server.com/");
-                hubProxy = hubConnection.CreateHubProxy("ChatHub");
-                hubProxy.On<string>("UpdateChatMessage", OnSignalRMessage);
-                hubConnection.StateChanged += HubConnection_StateChanged;
-                hubConnection.Start();
+            hubConnection.Error += ex => Console.WriteLine("An error occurred {0}", ex.Message);
+
+            hubConnection.Closed += () => Console.WriteLine("Connection with client id {0} closed", hubConnection.ConnectionId);
 
 
-            }
-            else {
-                Log.Error("OnCreate", "Google Play Services is not installed");
-                Toast.MakeText(this, "Google Play Services is not installed", ToastLength.Long).Show();
-            }
-            #pragma warning disable 612, 618
+            //_isGooglePlayServicesInstalled = IsGooglePlayServicesInstalled();
+
+            //if (_isGooglePlayServicesInstalled)
+            //{
+            //    // pass in the Context, ConnectionListener and ConnectionFailedListener
+            //    apiClient = new GoogleApiClient.Builder(this, this, this)
+            //        .AddApi(LocationServices.API).Build();
+
+            //    // generate a location request that we will pass into a call for location updates
+            //    locRequest = new LocationRequest();
+            //    apiClient.Connect();
+
+            //    //hent socket1.gpsfix.io
+            //    //hent socket2.gpsfix.io
+            //    //check health
+
+
+
+            //}
+            //else {
+            //    Log.Error("OnCreate", "Google Play Services is not installed");
+            //    Toast.MakeText(this, "Google Play Services is not installed", ToastLength.Long).Show();
+            //}
+            //#pragma warning disable 612, 618
             return base.OnStartCommand(intent, flags, startId);
             #pragma warning restore 612, 618
         }
 
         private void HubConnection_StateChanged(StateChange stateChange)
         {
-            if (stateChange.NewState == ConnectionState.Connected) return;
+            if (stateChange.NewState == ConnectionState.Connected)
+            {
+                hubProxy.Invoke("JoinSession", "testroom");
+            }
             if (stateChange.NewState == ConnectionState.Disconnected) return;
             if (stateChange.NewState == ConnectionState.Reconnecting) return;
             if (stateChange.NewState == ConnectionState.Connecting) return;
@@ -181,7 +207,10 @@ namespace DrawerLayout_V7_Tutorial
         }
         private void SendLocationToInternet(Intent intent, double latitude, double longitude)
         {
-            //if(hubConnection.)
+            if (hubConnection.State == ConnectionState.Connected)
+            {
+                hubProxy.Invoke("SendSessionMessage", latitude);
+            }
 
 
         }

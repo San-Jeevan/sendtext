@@ -48,7 +48,7 @@ namespace DrawerLayout_V7_Tutorial
 
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
-            SetUpMap();
+            //SetUpMap();
             var receiver = new MyTestReceiver();
             LocalBroadcastManager.GetInstance(this.Activity).RegisterReceiver(
                receiver, new IntentFilter("PosUpdate"));
