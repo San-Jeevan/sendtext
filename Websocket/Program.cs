@@ -52,15 +52,12 @@ namespace Websocket
             return Groups.Remove(Context.ConnectionId, sessionName);
         }
 
-      
-
-
 
         public void SendSessionMessage(string sessionName, string message)
         {
             Console.WriteLine("SendSessionMessage {0}, {1}", sessionName, message);
             var caller = Context.ConnectionId;
-            Clients.Group(sessionName).locationUpdate(message);
+            Clients.Group(sessionName).LocationUpdate(message);
         }
     }
 }

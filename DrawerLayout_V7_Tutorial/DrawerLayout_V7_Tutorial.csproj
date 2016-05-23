@@ -123,9 +123,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HomeFragment.cs" />
     <Compile Include="MapFragment.cs" />
     <Compile Include="GPSservice.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Models\SessionParticipant.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="MyActionBarDrawerToggle.cs" />
@@ -137,6 +139,9 @@
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <AndroidResource Include="Resources\layout\MapsLayout.axml">
+      <SubType>AndroidResource</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\HomeLayout.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -159,11 +164,24 @@
       <Visible>False</Visible>
       <Version>29.0.0.1</Version>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="json.net">
+      <Visible>False</Visible>
+      <Version>7.0.1</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="signalr">
       <Visible>False</Visible>
       <Version>2.1.2.2</Version>
       <InstallationInProgress>True</InstallationInProgress>
     </XamarinComponentReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{3a19eb86-d25c-434e-8a32-38156ec02eca}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\custom_btn_orange.xml" />
   </ItemGroup>
   <Import Project="..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.21\build\Microsoft.Bcl.Build.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

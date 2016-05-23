@@ -8,6 +8,7 @@ using Android.Content;
 using Android.Gms.Common;
 using Android.Gms.Common.Apis;
 using Android.Gms.Location;
+using Android.Gms.Maps.Model;
 using Android.Locations;
 using Android.OS;
 using Android.Runtime;
@@ -15,7 +16,9 @@ using Android.Support.V4.Content;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
+using Common.Models;
 using Microsoft.AspNet.SignalR.Client;
+using Newtonsoft.Json;
 
 namespace DrawerLayout_V7_Tutorial
 {
@@ -29,6 +32,7 @@ namespace DrawerLayout_V7_Tutorial
         HubConnection hubConnection;
         IHubProxy hubProxy;
         bool _isGooglePlayServicesInstalled;
+        private LatLng lastPosition = new LatLng(232, 121);
 
 
         public void startGps()
@@ -56,6 +60,8 @@ namespace DrawerLayout_V7_Tutorial
             {
                 LocationServices.FusedLocationApi.RemoveLocationUpdates(apiClient, this);
                 apiClient.Disconnect();
+                hubConnection.Stop();
+                hubConnection.Dispose();
             }
             base.OnDestroy();
         }
@@ -78,18 +84,23 @@ namespace DrawerLayout_V7_Tutorial
             LocalBroadcastManager.GetInstance(this).SendBroadcast(intent);
         }
 
+        private void SendOthersLocationBroadcast(Intent intent, string updPacket)
+        {
+            intent.PutExtra("updPacket", updPacket);
+            LocalBroadcastManager.GetInstance(this).SendBroadcast(intent);
+        }
+
         public override StartCommandResult OnStartCommand(Intent intent, StartCommandFlags flags, int startId)
         {
-
-
             hubConnection = new HubConnection("http://snuskelabben.cloudapp.net:8022");
             hubProxy = hubConnection.CreateHubProxy("GpsHub");
-            hubProxy.On<string>("UpdateChatMessage", OnSignalRMessage);
+            hubProxy.On<string>("LocationUpdate", OnSignalRMessage);
             hubConnection.StateChanged += HubConnection_StateChanged;
             hubConnection.Start().ContinueWith(task =>
             {
                 if (task.IsFaulted)
                 {
+                    Log.Error("LocationClient", "SignalrState: " + task.Exception.GetBaseException());
                     Console.WriteLine("Failed to start: {0}", task.Exception.GetBaseException());
                 }
                 else
@@ -104,36 +115,37 @@ namespace DrawerLayout_V7_Tutorial
             hubConnection.Closed += () => Console.WriteLine("Connection with client id {0} closed", hubConnection.ConnectionId);
 
 
-            //_isGooglePlayServicesInstalled = IsGooglePlayServicesInstalled();
+            _isGooglePlayServicesInstalled = IsGooglePlayServicesInstalled();
 
-            //if (_isGooglePlayServicesInstalled)
-            //{
-            //    // pass in the Context, ConnectionListener and ConnectionFailedListener
-            //    apiClient = new GoogleApiClient.Builder(this, this, this)
-            //        .AddApi(LocationServices.API).Build();
+            if (_isGooglePlayServicesInstalled)
+            {
+                // pass in the Context, ConnectionListener and ConnectionFailedListener
+                apiClient = new GoogleApiClient.Builder(this, this, this)
+                    .AddApi(LocationServices.API).Build();
 
-            //    // generate a location request that we will pass into a call for location updates
-            //    locRequest = new LocationRequest();
-            //    apiClient.Connect();
+                // generate a location request that we will pass into a call for location updates
+                locRequest = new LocationRequest();
+                apiClient.Connect();
 
-            //    //hent socket1.gpsfix.io
-            //    //hent socket2.gpsfix.io
-            //    //check health
+                //hent socket1.gpsfix.io
+                //hent socket2.gpsfix.io
+                //check health
 
 
 
-            //}
-            //else {
-            //    Log.Error("OnCreate", "Google Play Services is not installed");
-            //    Toast.MakeText(this, "Google Play Services is not installed", ToastLength.Long).Show();
-            //}
-            //#pragma warning disable 612, 618
+            }
+            else {
+                Log.Error("OnCreate", "Google Play Services is not installed");
+                Toast.MakeText(this, "Google Play Services is not installed", ToastLength.Long).Show();
+            }
+            #pragma warning disable 612, 618
             return base.OnStartCommand(intent, flags, startId);
             #pragma warning restore 612, 618
         }
 
         private void HubConnection_StateChanged(StateChange stateChange)
         {
+            Log.Info("LocationClient", "SignalrState: " + stateChange.NewState);
             if (stateChange.NewState == ConnectionState.Connected)
             {
                 hubProxy.Invoke("JoinSession", "testroom");
@@ -193,8 +205,11 @@ namespace DrawerLayout_V7_Tutorial
 
         public void OnLocationChanged(Location location)
         {
+            if (lastPosition.Latitude == location.Latitude && lastPosition.Longitude == location.Longitude) return;
+            lastPosition = new LatLng(location.Latitude, location.Longitude);
             Toast.MakeText(this, location.Latitude + ", " + location.Longitude, ToastLength.Short).Show();
             Log.Debug("LocationClient", "Location updated");
+            
             Intent intent = new Intent("PosUpdate");
             SendLocationBroadcast(intent, location.Latitude, location.Longitude);
             SendLocationToInternet(intent, location.Latitude, location.Longitude);
@@ -203,13 +218,24 @@ namespace DrawerLayout_V7_Tutorial
 
         private void OnSignalRMessage(string message)
         {
-            
+             var abstractpacket = JsonConvert.DeserializeObject<AbstractPacket>(message) ;
+            //ignore our own packet.
+            if (abstractpacket.SignalRId == hubConnection.ConnectionId) return;
+            if (abstractpacket.Type == UpdateType.GpsUpdate)
+            {
+                
+                Intent intent = new Intent("ParticipantPosUpdate");
+                SendOthersLocationBroadcast(intent, message);
+            }
+
         }
         private void SendLocationToInternet(Intent intent, double latitude, double longitude)
         {
             if (hubConnection.State == ConnectionState.Connected)
             {
-                hubProxy.Invoke("SendSessionMessage", latitude);
+                var update = new LocationUpdPacket { SignalRId = hubConnection.ConnectionId, Latitude = latitude, Longitude = longitude, Type = UpdateType.GpsUpdate};
+                object[] wordsToSend = new object[] { "testroom", JsonConvert.SerializeObject(update) };
+                hubProxy.Invoke("sendSessionMessage", wordsToSend);
             }
 
 

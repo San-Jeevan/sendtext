@@ -1402,25 +1402,28 @@ namespace DrawerLayout_V7_Tutorial
 			public const int common_plus_signin_btn_text_light_pressed = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int ic_action_help = 2130837597;
+			public const int custom_btn_orange = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int ic_action_refresh = 2130837598;
+			public const int ic_action_help = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int Icon = 2130837599;
+			public const int ic_action_refresh = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int places_ic_clear = 2130837600;
+			public const int Icon = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int places_ic_search = 2130837601;
+			public const int places_ic_clear = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int powered_by_google_dark = 2130837602;
+			public const int places_ic_search = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int powered_by_google_light = 2130837603;
+			public const int powered_by_google_dark = 2130837603;
+			
+			// aapt resource value: 0x7f020064
+			public const int powered_by_google_light = 2130837604;
 			
 			static Drawable()
 			{
@@ -1474,8 +1477,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0a002b
 			public const int action_mode_close_button = 2131361835;
 			
-			// aapt resource value: 0x7f0a0058
-			public const int action_refresh = 2131361880;
+			// aapt resource value: 0x7f0a0059
+			public const int action_refresh = 2131361881;
 			
 			// aapt resource value: 0x7f0a002c
 			public const int activity_chooser_view_content = 2131361836;
@@ -1501,8 +1504,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0a0022
 			public const int collapseActionView = 2131361826;
 			
-			// aapt resource value: 0x7f0a004c
-			public const int content_frame = 2131361868;
+			// aapt resource value: 0x7f0a004d
+			public const int content_frame = 2131361869;
 			
 			// aapt resource value: 0x7f0a0014
 			public const int dark = 2131361812;
@@ -1519,8 +1522,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0a0018
 			public const int disableHome = 2131361816;
 			
-			// aapt resource value: 0x7f0a004b
-			public const int drawer_layout = 2131361867;
+			// aapt resource value: 0x7f0a004c
+			public const int drawer_layout = 2131361868;
 			
 			// aapt resource value: 0x7f0a0027
 			public const int dropdown = 2131361831;
@@ -1543,6 +1546,9 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0a0019
 			public const int homeAsUp = 2131361817;
 			
+			// aapt resource value: 0x7f0a004a
+			public const int homelayout = 2131361866;
+			
 			// aapt resource value: 0x7f0a0009
 			public const int hybrid = 2131361801;
 			
@@ -1558,8 +1564,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0a002e
 			public const int image = 2131361838;
 			
-			// aapt resource value: 0x7f0a004d
-			public const int left_drawer = 2131361869;
+			// aapt resource value: 0x7f0a004e
+			public const int left_drawer = 2131361870;
 			
 			// aapt resource value: 0x7f0a0015
 			public const int light = 2131361813;
@@ -1570,11 +1576,11 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0a0030
 			public const int list_item = 2131361840;
 			
-			// aapt resource value: 0x7f0a004f
-			public const int map = 2131361871;
+			// aapt resource value: 0x7f0a0050
+			public const int map = 2131361872;
 			
-			// aapt resource value: 0x7f0a004e
-			public const int mapslayout = 2131361870;
+			// aapt resource value: 0x7f0a004f
+			public const int mapslayout = 2131361871;
 			
 			// aapt resource value: 0x7f0a0020
 			public const int middle = 2131361824;
@@ -1588,29 +1594,29 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0a000b
 			public const int normal = 2131361803;
 			
-			// aapt resource value: 0x7f0a0052
-			public const int place_autocomplete_clear_button = 2131361874;
-			
-			// aapt resource value: 0x7f0a0054
-			public const int place_autocomplete_powered_by_google = 2131361876;
-			
-			// aapt resource value: 0x7f0a0056
-			public const int place_autocomplete_prediction_primary_text = 2131361878;
-			
-			// aapt resource value: 0x7f0a0057
-			public const int place_autocomplete_prediction_secondary_text = 2131361879;
+			// aapt resource value: 0x7f0a0053
+			public const int place_autocomplete_clear_button = 2131361875;
 			
 			// aapt resource value: 0x7f0a0055
-			public const int place_autocomplete_progress = 2131361877;
+			public const int place_autocomplete_powered_by_google = 2131361877;
 			
-			// aapt resource value: 0x7f0a0050
-			public const int place_autocomplete_search_button = 2131361872;
+			// aapt resource value: 0x7f0a0057
+			public const int place_autocomplete_prediction_primary_text = 2131361879;
+			
+			// aapt resource value: 0x7f0a0058
+			public const int place_autocomplete_prediction_secondary_text = 2131361880;
+			
+			// aapt resource value: 0x7f0a0056
+			public const int place_autocomplete_progress = 2131361878;
 			
 			// aapt resource value: 0x7f0a0051
-			public const int place_autocomplete_search_input = 2131361873;
+			public const int place_autocomplete_search_button = 2131361873;
 			
-			// aapt resource value: 0x7f0a0053
-			public const int place_autocomplete_separator = 2131361875;
+			// aapt resource value: 0x7f0a0052
+			public const int place_autocomplete_search_input = 2131361874;
+			
+			// aapt resource value: 0x7f0a0054
+			public const int place_autocomplete_separator = 2131361876;
 			
 			// aapt resource value: 0x7f0a0005
 			public const int progress_circular = 2131361797;
@@ -1684,8 +1690,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0a0032
 			public const int title = 2131361842;
 			
-			// aapt resource value: 0x7f0a004a
-			public const int toolbar = 2131361866;
+			// aapt resource value: 0x7f0a004b
+			public const int toolbar = 2131361867;
 			
 			// aapt resource value: 0x7f0a0008
 			public const int up = 2131361800;
@@ -1804,25 +1810,28 @@ namespace DrawerLayout_V7_Tutorial
 			public const int abc_simple_dropdown_hint = 2130903062;
 			
 			// aapt resource value: 0x7f030017
-			public const int Main = 2130903063;
+			public const int HomeLayout = 2130903063;
 			
 			// aapt resource value: 0x7f030018
-			public const int MapsLayout = 2130903064;
+			public const int Main = 2130903064;
 			
 			// aapt resource value: 0x7f030019
-			public const int place_autocomplete_fragment = 2130903065;
+			public const int MapsLayout = 2130903065;
 			
 			// aapt resource value: 0x7f03001a
-			public const int place_autocomplete_item_powered_by_google = 2130903066;
+			public const int place_autocomplete_fragment = 2130903066;
 			
 			// aapt resource value: 0x7f03001b
-			public const int place_autocomplete_item_prediction = 2130903067;
+			public const int place_autocomplete_item_powered_by_google = 2130903067;
 			
 			// aapt resource value: 0x7f03001c
-			public const int place_autocomplete_progress = 2130903068;
+			public const int place_autocomplete_item_prediction = 2130903068;
 			
 			// aapt resource value: 0x7f03001d
-			public const int support_simple_spinner_dropdown_item = 2130903069;
+			public const int place_autocomplete_progress = 2130903069;
+			
+			// aapt resource value: 0x7f03001e
+			public const int support_simple_spinner_dropdown_item = 2130903070;
 			
 			static Layout()
 			{
@@ -2738,6 +2747,9 @@ namespace DrawerLayout_V7_Tutorial
 			
 			// aapt resource value: 0x7f0b00de
 			public const int Widget_AppCompat_Toolbar_Button_Navigation = 2131427550;
+			
+			// aapt resource value: 0x7f0b00ed
+			public const int btnStyleOrange = 2131427565;
 			
 			static Style()
 			{

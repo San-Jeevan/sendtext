@@ -28,30 +28,44 @@ namespace DrawerLayout_V7_Tutorial
         private Button btnPrev, btnNext;
 
 
-        void listView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
+	    protected override void OnPause()
+	    {
+            StopService(new Intent(this, typeof(GPSservice)));
+            base.OnPause();
+	    }
+
+	    void listView_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             Fragment fragment = null;
             var item = mLeftDataSet[e.Position];
-            if (item == "Left Item 1")
+            if (item == "Home")
+            {
+                fragment = new HomeFragment();
+            }
+            if (item == "Session")
             {
                 fragment = new MapFragment();
+            }
+            if (item == "Settings")
+            {
+                fragment = new MapFragment();
+            }
+            if (item == "About")
+            {
+                fragment = new MapFragment();
+            }
 
-            }
-            if (item == "Left Item 2")
-            {
-                fragment = new MapFragment();
-                ;
-            }
-            FragmentManager.BeginTransaction().Replace(Resource.Id.content_frame, fragment).Commit();
+           FragmentManager.BeginTransaction().Replace(Resource.Id.content_frame, fragment).Commit();
            mDrawerLayout.CloseDrawer(mLeftDrawer);
         }
         protected override void OnCreate (Bundle bundle)
 		{
 			base.OnCreate (bundle);
-	
-			// Set our view from the "main" layout resource
-			SetContentView (Resource.Layout.Main);
 
+            // Set our view from the "main" layout resource
+            SetContentView(Resource.Layout.Main);
+
+            FragmentManager.BeginTransaction().Replace(Resource.Id.content_frame, new HomeFragment()).Commit();
 
             mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
            
@@ -65,8 +79,10 @@ namespace DrawerLayout_V7_Tutorial
             SetSupportActionBar(mToolbar);
 
             mLeftDataSet = new List<string>();
-			mLeftDataSet.Add ("Left Item 1");
-			mLeftDataSet.Add ("Left Item 2");
+			mLeftDataSet.Add ("Home");
+			mLeftDataSet.Add ("Session");
+			mLeftDataSet.Add ("Settings");
+			mLeftDataSet.Add ("About");
 			mLeftAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mLeftDataSet);
 			mLeftDrawer.Adapter = mLeftAdapter;
 
