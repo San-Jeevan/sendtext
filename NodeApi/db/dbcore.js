@@ -6,7 +6,7 @@ var bcrypt = require('bcryptjs');
 var config = require('../config.js');
 
 sql.connect(config.sql.uri).then(function () {
-
+	console.log("connected to SQL: " + config.sql.uri)
 	//GET SESSION
 	exports.getsession = function (shortname, callback) {
 		if (shortname == null) callback(new Error('shortname is null'));
@@ -94,4 +94,6 @@ sql.connect(config.sql.uri).then(function () {
 
 
 
-});
+}).catch(function (err) {
+	console.log(err);
+});;
