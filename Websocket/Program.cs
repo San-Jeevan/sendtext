@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Models;
 using Microsoft.AspNet.SignalR;
 using Microsoft.Owin.Cors;
 using Microsoft.Owin.Hosting;
@@ -34,21 +36,36 @@ namespace Websocket
 
     public class GpsHub : Hub
     {
+
+        public static Dictionary<string, string> Dictionary = new Dictionary<string, string>();
+
         public override Task OnDisconnected(bool stopCalled)
         {
-            Groups.Remove(Context.ConnectionId, "");
+            
+            if (Dictionary.ContainsKey(Context.ConnectionId))
+            {
+                StatusUpdPacket statusUpdate = new StatusUpdPacket() {SignalRId = Context.ConnectionId, Description = "", Type = UpdateType.StatusUpdate, Status = StatusType.Disconnected};
+                string sessionName = Dictionary[Context.ConnectionId];
+                Dictionary.Remove(Context.ConnectionId);
+                Groups.Remove(Context.ConnectionId, sessionName);
+                Console.WriteLine(string.Format("User {0} leaving channel {1}", Context.ConnectionId, sessionName));
+                Clients.Group(sessionName).LocationUpdate(statusUpdate.ToString());
+            }
+
             return base.OnDisconnected(stopCalled);
         }
 
         public Task JoinSession(string sessionName)
         {
             Console.WriteLine("Joining {0}", sessionName);
+            Dictionary.Add(Context.ConnectionId, sessionName);
             return Groups.Add(Context.ConnectionId, sessionName);
         }
 
         public Task LeaveSession(string sessionName)
         {
             Console.WriteLine("Leaving {0}", sessionName);
+            Dictionary.Remove(sessionName);
             return Groups.Remove(Context.ConnectionId, sessionName);
         }
 
@@ -56,7 +73,7 @@ namespace Websocket
         public void SendSessionMessage(string sessionName, string message)
         {
             Console.WriteLine("SendSessionMessage {0}, {1}", sessionName, message);
-            var caller = Context.ConnectionId;
+          
             Clients.Group(sessionName).LocationUpdate(message);
         }
     }

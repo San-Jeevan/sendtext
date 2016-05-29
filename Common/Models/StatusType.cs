@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Common.Models
 {
-    public enum UpdateType
+    public enum StatusType
     {
-        GpsUpdate,
-        Message,
-        StatusUpdate
+        Connected,
+        Disconnected
     };
 }

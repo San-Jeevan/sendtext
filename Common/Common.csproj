@@ -39,7 +39,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\AbstractPacket.cs" />
+    <Compile Include="Models\StatusUpdPacket.cs" />
     <Compile Include="Models\LocationUpdPacket.cs" />
+    <Compile Include="Models\StatusType.cs" />
     <Compile Include="Models\UpdateType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
