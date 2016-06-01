@@ -48,7 +48,6 @@ namespace Websocket
                 string sessionName = Dictionary[Context.ConnectionId];
                 Dictionary.Remove(Context.ConnectionId);
                 Groups.Remove(Context.ConnectionId, sessionName);
-                Console.WriteLine(string.Format("User {0} leaving channel {1}", Context.ConnectionId, sessionName));
                 Clients.Group(sessionName).LocationUpdate(statusUpdate.ToString());
             }
 
@@ -59,13 +58,22 @@ namespace Websocket
         {
             Console.WriteLine("Joining {0}", sessionName);
             Dictionary.Add(Context.ConnectionId, sessionName);
+            StatusUpdPacket statusUpdate = new StatusUpdPacket() { SignalRId = Context.ConnectionId, Description = "", Type = UpdateType.StatusUpdate, Status = StatusType.Connected };
+            Clients.Group(sessionName).LocationUpdate(statusUpdate.ToString());
             return Groups.Add(Context.ConnectionId, sessionName);
         }
 
         public Task LeaveSession(string sessionName)
         {
             Console.WriteLine("Leaving {0}", sessionName);
-            Dictionary.Remove(sessionName);
+            if (Dictionary.ContainsKey(Context.ConnectionId))
+            {
+                StatusUpdPacket statusUpdate = new StatusUpdPacket() { SignalRId = Context.ConnectionId, Description = "", Type = UpdateType.StatusUpdate, Status = StatusType.Disconnected };
+                string sessionNameFromDic = Dictionary[Context.ConnectionId];
+                Dictionary.Remove(Context.ConnectionId);
+                Groups.Remove(Context.ConnectionId, sessionNameFromDic);
+                Clients.Group(sessionNameFromDic).LocationUpdate(statusUpdate.ToString());
+            }
             return Groups.Remove(Context.ConnectionId, sessionName);
         }
 

@@ -11,17 +11,35 @@
 		<item name="spinBars">true</item>
 	</style>
 
-  <style name="btnStyleOrange" parent="@android:style/Widget.Button">
-    <item name="android:textSize">15sp</item>
-    <item name="android:textStyle">bold</item>
+  <style name="BtnStyleBlue" parent="Widget.AppCompat.Button.Colored">
     <item name="android:textColor">#FFFFFF</item>
-    <item name="android:gravity">center</item>
-    <item name="android:shadowColor">#000000</item>
-    <item name="android:shadowDx">1</item>
-    <item name="android:shadowDy">1</item>
-    <item name="android:shadowRadius">0.6</item>
-    <item name="android:background">@drawable/custom_btn_orange</item>
-    <item name="android:padding">10dip</item>
+    <item name="colorButtonNormal">#0095ff</item>
   </style>
+  
+  
+  <style name="BtnStylePink" parent="Widget.AppCompat.Button.Colored">
+    <item name="colorButtonNormal">#FF4081</item>
+    <item name="android:textColor">#FFFFFF</item>
+  </style>
+
+
+  <style name="BtnStyleGreen" parent="Widget.AppCompat.Button.Colored">
+    <item name="colorButtonNormal">#4CAF50</item>
+    <item name="android:textColor">#FFFFFF</item>
+  </style>
+
+
+
+  <style name="BtnStyleFlatBlue" parent="Theme.AppCompat.Light">
+    <item name="colorControlHighlight">#0095ff</item>
+    <item name="android:textColor">#FFFFFF</item>
+    
+  </style>
+  
+  <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Borderless">
+    
+    <item name="android:textColor">#FFFFFF</item>
+  </style>
+  
 </resources>
 

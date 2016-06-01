@@ -20,7 +20,6 @@ var mySignalRId = "0";
 
 
 function SendLocationToInternet(position) {
-  
     if (signalrConnected && mySignalRId!= "0")
     {
         var update = { SignalRId : mySignalRId, Latitude : position.coords.latitude, Longitude : position.coords.longitude, Type : 0};
@@ -53,7 +52,10 @@ function StatusUpdate(message) {
                 _SessionParticipants.splice(i, 1);
             }
         }
-    
+    }
+
+    else if (message.Status === StatusType.Connected) {
+        SendLocationToInternet({ coords: { latitude: _myMarker.position.lat(), longitude: _myMarker.position.lng() } });
     }
 }
 

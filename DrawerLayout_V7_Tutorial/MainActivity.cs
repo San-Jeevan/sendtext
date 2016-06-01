@@ -14,9 +14,9 @@ using Java.Lang;
 
 namespace DrawerLayout_V7_Tutorial
 {
-	[Activity (Label = "DrawerLayout_V7_Tutorial", MainLauncher = true, Icon = "@drawable/icon", Theme="@style/MyTheme")]
-	public class MainActivity : ActionBarActivity
-	{
+	[Activity (Label = "DrawerLayout_V7_Tutorial", MainLauncher = false, Icon = "@drawable/icon", Theme="@style/MyTheme")]
+	public class MainActivity : AppCompatActivity
+    {
 		private SupportToolbar mToolbar;
 		private MyActionBarDrawerToggle mDrawerToggle;
 		private DrawerLayout mDrawerLayout;
@@ -67,7 +67,7 @@ namespace DrawerLayout_V7_Tutorial
 
             FragmentManager.BeginTransaction().Replace(Resource.Id.content_frame, new HomeFragment()).Commit();
 
-            mToolbar = FindViewById<SupportToolbar>(Resource.Id.toolbar);
+            mToolbar = FindViewById<SupportToolbar> (Resource.Id.toolbar);
            
 			mDrawerLayout = FindViewById<DrawerLayout>(Resource.Id.drawer_layout);
 			mLeftDrawer = FindViewById<ListView>(Resource.Id.left_drawer);
@@ -86,6 +86,7 @@ namespace DrawerLayout_V7_Tutorial
 			mLeftAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleListItem1, mLeftDataSet);
 			mLeftDrawer.Adapter = mLeftAdapter;
 
+
 			mDrawerToggle = new MyActionBarDrawerToggle(
 				this,							//Host Activity
 				mDrawerLayout,					//DrawerLayout
@@ -93,9 +94,10 @@ namespace DrawerLayout_V7_Tutorial
 				Resource.String.closeDrawer		//Closed Message
 			);
 
-            mDrawerLayout.SetDrawerListener(mDrawerToggle);
+            mDrawerLayout.AddDrawerListener(mDrawerToggle);
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayShowTitleEnabled(true);
+            mToolbar.SetNavigationIcon(Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha);
             mDrawerToggle.SyncState();
 
             if (bundle != null)

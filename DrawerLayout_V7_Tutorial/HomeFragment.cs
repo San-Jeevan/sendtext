@@ -14,8 +14,6 @@ namespace DrawerLayout_V7_Tutorial
 
     internal class HomeFragment : Fragment
     {
-
-
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
             var uri = ContactsContract.CommonDataKinds.Phone.ContentUri;
