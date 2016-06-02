@@ -11,6 +11,8 @@
 		<item name="spinBars">true</item>
 	</style>
 
+  
+  <!--BUTTONS-->
   <style name="BtnStyleBlue" parent="Widget.AppCompat.Button.Colored">
     <item name="android:textColor">#FFFFFF</item>
     <item name="colorButtonNormal">#0095ff</item>
@@ -27,19 +29,14 @@
     <item name="colorButtonNormal">#4CAF50</item>
     <item name="android:textColor">#FFFFFF</item>
   </style>
-
-
-
-  <style name="BtnStyleFlatBlue" parent="Theme.AppCompat.Light">
-    <item name="colorControlHighlight">#0095ff</item>
-    <item name="android:textColor">#FFFFFF</item>
-    
-  </style>
   
-  <style name="AppTheme.Button" parent="Widget.AppCompat.Button.Borderless">
-    
-    <item name="android:textColor">#FFFFFF</item>
-  </style>
   
+  <!--EDITTEXT-->
+
+  <style name="LoginLoginEditText" parent="Theme.AppCompat.Light">
+    <item name="colorControlNormal">@color/indigo</item>
+    <item name="colorControlActivated">@color/pink</item>
+  </style>
+
 </resources>
 

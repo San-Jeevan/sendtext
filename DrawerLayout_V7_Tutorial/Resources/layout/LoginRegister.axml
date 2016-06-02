@@ -1,68 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/loginregisterlayout"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="horizontal">
-    <RelativeLayout
-        android:layout_width="0dip"
-        android:layout_height="fill_parent"
-        android:layout_weight="0.15">
-        <View
-            android:layout_marginTop="270dp"
+    android:fitsSystemWindows="true">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="56dp"
+        android:paddingLeft="24dp"
+        android:paddingRight="24dp">
+    <!--  Name Label -->
+        <EditText
+            android:id="@+id/input_username"
             android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="0dip"
-        android:layout_height="fill_parent"
-        android:layout_weight="0.7"
-        android:layout_marginTop="0.0dp">
-        <LinearLayout
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:hint="Username"
+            android:theme="@style/LoginLoginEditText"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
+    <!-- Email Label -->
+        <EditText
+            android:id="@+id/input_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:hint="Email (used for password recovery)"
+            android:theme="@style/LoginLoginEditText"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
+    <!-- Password Label -->
+        <EditText
+            android:id="@+id/input_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="Password"
+            android:theme="@style/LoginLoginEditText"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp" />
+    <!-- Signup Button -->
+        <Button
+            android:id="@+id/BtnLgnRegister"
+            android:text="Create Account"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="false"
-            android:orientation="vertical"
-            android:layout_marginTop="80dp">
-            <Button
-                android:text="Login"
-                android:layout_width="fill_parent"
-                android:layout_height="60dip"
-                android:theme="@style/BtnStyleBlue" />
-            <Button
-                android:text="Register"
-                android:layout_width="fill_parent"
-                android:layout_height="60dip"
-                android:theme="@style/BtnStylePink" />
-            <View
-                android:layout_marginTop="70dp"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-        </LinearLayout>
-        <LinearLayout
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:padding="12dp"
+            android:theme="@style/BtnStyleBlue" />
+        <TextView
+            android:id="@+id/BtnLogin"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="false"
-            android:orientation="vertical"
-            android:layout_marginTop="370dp">
-            <Button
-                android:text="Continue as guest"
-                android:layout_width="fill_parent"
-                android:layout_height="60dip"
-                android:theme="@style/BtnStyleBlue" />
-        </LinearLayout>
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="0dip"
-        android:layout_height="fill_parent"
-        android:layout_weight="0.15">
-        <View
-            android:layout_marginTop="270dp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
-    </RelativeLayout>
-</LinearLayout>
+            android:layout_marginBottom="24dp"
+            android:text="Already a member? Login"
+            android:gravity="center"
+            android:clickable="true"
+            android:textSize="16dip" />
+    </LinearLayout>
+</ScrollView>

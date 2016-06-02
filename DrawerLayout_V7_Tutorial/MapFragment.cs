@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Android.App;
 using Android.Content;
 using Android.Gms.Maps;
@@ -136,8 +137,7 @@ namespace DrawerLayout_V7_Tutorial
                 return null;
             }
 
-            var alreadyrunning = IsServiceRunning("GPSservice");
-            if(!alreadyrunning) this.Activity.StartService(new Intent(this.Activity, typeof(GPSservice)));
+          
             return inflater.Inflate(Resource.Layout.MapsLayout, container, false);
         }
 
@@ -160,6 +160,19 @@ namespace DrawerLayout_V7_Tutorial
         public void OnMapReady(GoogleMap googleMap)
         {
             nMap = googleMap;
+        }
+
+        public override void OnResume()
+        {
+            var alreadyrunning = IsServiceRunning("GPSservice");
+            if (!alreadyrunning)
+            {
+                //this.Activity.StartService(new Intent(this.Activity, typeof(GPSservice)));
+                new Task(() => {
+                    Android.App.Application.Context.StartService(new Intent(this.Activity, typeof(GPSservice)));
+                   }).Start(); 
+            }
+            base.OnResume();
         }
     }
        

@@ -36,33 +36,35 @@ namespace DrawerLayout_V7_Tutorial
 
 
         public void startGps()
-        {         
-            // Setting location priority to PRIORITY_HIGH_ACCURACY (100)
-            locRequest.SetPriority(100);
+        {
+                // Setting location priority to PRIORITY_HIGH_ACCURACY (100)
+                locRequest.SetPriority(100);
 
-            // Setting interval between updates, in milliseconds
-            // NOTE: the default FastestInterval is 1 minute. If you want to receive location updates more than 
-            // once a minute, you _must_ also change the FastestInterval to be less than or equal to your Interval
-            locRequest.SetFastestInterval(500);
-            locRequest.SetInterval(1000);
+                // Setting interval between updates, in milliseconds
+                // NOTE: the default FastestInterval is 1 minute. If you want to receive location updates more than 
+                // once a minute, you _must_ also change the FastestInterval to be less than or equal to your Interval
+                locRequest.SetFastestInterval(500);
+                locRequest.SetInterval(1000);
 
-            Log.Debug("LocationRequest", "Request priority set to status code {0}, interval set to {1} ms",
-                locRequest.Priority.ToString(), locRequest.Interval.ToString());
+                Log.Debug("LocationRequest", "Request priority set to status code {0}, interval set to {1} ms",
+                    locRequest.Priority.ToString(), locRequest.Interval.ToString());
 
-            // pass in a location request and LocationListener
-            LocationServices.FusedLocationApi.RequestLocationUpdates(apiClient, locRequest, this);
-
+                // pass in a location request and LocationListener
+                LocationServices.FusedLocationApi.RequestLocationUpdates(apiClient, locRequest, this);
         }
 
         public override void OnDestroy()
         {
             if (apiClient.IsConnected)
             {
-                LocationServices.FusedLocationApi.RemoveLocationUpdates(apiClient, this);
-                apiClient.Disconnect();
-                hubConnection.Stop();
-                hubConnection.Dispose();
+                new Task(() => {
+                    LocationServices.FusedLocationApi.RemoveLocationUpdates(apiClient, this);
+                    apiClient.Disconnect();
+                    hubConnection.Stop();
+                    hubConnection.Dispose();
+                }).Start();
             }
+
             base.OnDestroy();
         }
 
@@ -119,18 +121,19 @@ namespace DrawerLayout_V7_Tutorial
 
             if (_isGooglePlayServicesInstalled)
             {
-                // pass in the Context, ConnectionListener and ConnectionFailedListener
-                apiClient = new GoogleApiClient.Builder(this, this, this)
-                    .AddApi(LocationServices.API).Build();
+               
+                    // pass in the Context, ConnectionListener and ConnectionFailedListener
+                    apiClient = new GoogleApiClient.Builder(this, this, this)
+                        .AddApi(LocationServices.API).Build();
 
-                // generate a location request that we will pass into a call for location updates
-                locRequest = new LocationRequest();
-                apiClient.Connect();
+                    // generate a location request that we will pass into a call for location updates
+                    locRequest = new LocationRequest();
 
-                //hent socket1.gpsfix.io
-                //hent socket2.gpsfix.io
-                //check health
+                    apiClient.Connect();
 
+                    //hent socket1.gpsfix.io
+                    //hent socket2.gpsfix.io
+                    //check health
 
 
             }

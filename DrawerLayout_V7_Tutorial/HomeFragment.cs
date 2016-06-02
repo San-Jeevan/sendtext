@@ -16,25 +16,25 @@ namespace DrawerLayout_V7_Tutorial
     {
         public override void OnViewCreated(View view, Bundle savedInstanceState)
         {
-            var uri = ContactsContract.CommonDataKinds.Phone.ContentUri;
-            string[] projection = {
-   ContactsContract.Contacts.InterfaceConsts.Id,
-   ContactsContract.Contacts.InterfaceConsts.DisplayName,
-   ContactsContract.CommonDataKinds.Phone.Number
-};
-            var loader = new CursorLoader(this.Activity, uri, projection, null, null, null);
-            var cursor = (ICursor)loader.LoadInBackground();
+//            var uri = ContactsContract.CommonDataKinds.Phone.ContentUri;
+//            string[] projection = {
+//                 ContactsContract.Contacts.InterfaceConsts.Id,
+//                  ContactsContract.Contacts.InterfaceConsts.DisplayName,
+//             ContactsContract.CommonDataKinds.Phone.Number
+//};
+//            var loader = new CursorLoader(this.Activity, uri, projection, null, null, null);
+//            var cursor = (ICursor)loader.LoadInBackground();
 
 
-            cursor.MoveToFirst();
-            do
-            {
-                var ContactId = cursor.GetLong(cursor.GetColumnIndex(projection[0]));
-                var Name = cursor.GetString(cursor.GetColumnIndex(projection[1]));
-                var number = cursor.GetString(cursor.GetColumnIndex(projection[2]));
-                Log.Debug("smedrix", Name + " " + number);
+//            cursor.MoveToFirst();
+//            do
+//            {
+//                var ContactId = cursor.GetLong(cursor.GetColumnIndex(projection[0]));
+//                var Name = cursor.GetString(cursor.GetColumnIndex(projection[1]));
+//                var number = cursor.GetString(cursor.GetColumnIndex(projection[2]));
+//                Log.Debug("smedrix", Name + " " + number);
 
-            } while (cursor.MoveToNext());
+//            } while (cursor.MoveToNext());
 
             //var fromColumns = new string[] { ContactsContract.Contacts.InterfaceConsts.DisplayName };
             //var toControlIds = new int[] { Android.Resource.Id.Text1 };

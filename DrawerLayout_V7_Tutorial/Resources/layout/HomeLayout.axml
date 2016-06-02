@@ -23,6 +23,7 @@
             android:orientation="vertical"
             android:layout_marginTop="60dp">
             <Button
+                android:id="@+id/homelayout"
                 android:text="Log in"
                 android:layout_width="fill_parent"
                 android:layout_height="80dip"

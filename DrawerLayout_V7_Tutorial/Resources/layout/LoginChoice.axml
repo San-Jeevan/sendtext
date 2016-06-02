@@ -27,11 +27,13 @@
             android:orientation="vertical"
             android:layout_marginTop="80dp">
             <Button
+                android:id="@+id/BtnLgnChoiceLgn"
                 android:text="Login"
                 android:layout_width="fill_parent"
                 android:layout_height="60dip"
                 android:theme="@style/BtnStyleBlue" />
             <Button
+                android:id="@+id/BtnLgnChoiceRegister"
                 android:text="Register"
                 android:layout_width="fill_parent"
                 android:layout_height="60dip"
@@ -49,6 +51,7 @@
             android:orientation="vertical"
             android:layout_marginTop="370dp">
             <Button
+                android:id="@+id/BtnLgnChoiceGuest"
                 android:text="Continue as guest"
                 android:layout_width="fill_parent"
                 android:layout_height="60dip"

@@ -820,29 +820,29 @@ namespace DrawerLayout_V7_Tutorial
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f050052
-			public const int abc_background_cache_hint_selector_material_dark = 2131034194;
+			// aapt resource value: 0x7f050065
+			public const int abc_background_cache_hint_selector_material_dark = 2131034213;
 			
-			// aapt resource value: 0x7f050053
-			public const int abc_background_cache_hint_selector_material_light = 2131034195;
+			// aapt resource value: 0x7f050066
+			public const int abc_background_cache_hint_selector_material_light = 2131034214;
 			
 			// aapt resource value: 0x7f050017
 			public const int abc_input_method_navigation_guard = 2131034135;
 			
-			// aapt resource value: 0x7f050054
-			public const int abc_primary_text_disable_only_material_dark = 2131034196;
+			// aapt resource value: 0x7f050067
+			public const int abc_primary_text_disable_only_material_dark = 2131034215;
 			
-			// aapt resource value: 0x7f050055
-			public const int abc_primary_text_disable_only_material_light = 2131034197;
+			// aapt resource value: 0x7f050068
+			public const int abc_primary_text_disable_only_material_light = 2131034216;
 			
-			// aapt resource value: 0x7f050056
-			public const int abc_primary_text_material_dark = 2131034198;
+			// aapt resource value: 0x7f050069
+			public const int abc_primary_text_material_dark = 2131034217;
 			
-			// aapt resource value: 0x7f050057
-			public const int abc_primary_text_material_light = 2131034199;
+			// aapt resource value: 0x7f05006a
+			public const int abc_primary_text_material_light = 2131034218;
 			
-			// aapt resource value: 0x7f050058
-			public const int abc_search_url_text = 2131034200;
+			// aapt resource value: 0x7f05006b
+			public const int abc_search_url_text = 2131034219;
 			
 			// aapt resource value: 0x7f050018
 			public const int abc_search_url_text_normal = 2131034136;
@@ -853,11 +853,11 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f05001a
 			public const int abc_search_url_text_selected = 2131034138;
 			
-			// aapt resource value: 0x7f050059
-			public const int abc_secondary_text_material_dark = 2131034201;
+			// aapt resource value: 0x7f05006c
+			public const int abc_secondary_text_material_dark = 2131034220;
 			
-			// aapt resource value: 0x7f05005a
-			public const int abc_secondary_text_material_light = 2131034202;
+			// aapt resource value: 0x7f05006d
+			public const int abc_secondary_text_material_light = 2131034221;
 			
 			// aapt resource value: 0x7f05001b
 			public const int accent_material_dark = 2131034139;
@@ -876,6 +876,15 @@ namespace DrawerLayout_V7_Tutorial
 			
 			// aapt resource value: 0x7f050020
 			public const int background_material_light = 2131034144;
+			
+			// aapt resource value: 0x7f050054
+			public const int bg_color = 2131034196;
+			
+			// aapt resource value: 0x7f05005f
+			public const int blue_100 = 2131034207;
+			
+			// aapt resource value: 0x7f050060
+			public const int blue_200 = 2131034208;
 			
 			// aapt resource value: 0x7f050021
 			public const int bright_foreground_disabled_material_dark = 2131034145;
@@ -901,11 +910,14 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f050028
 			public const int button_material_light = 2131034152;
 			
+			// aapt resource value: 0x7f050055
+			public const int color_white_semitransparent = 2131034197;
+			
 			// aapt resource value: 0x7f05000e
 			public const int common_action_bar_splitter = 2131034126;
 			
-			// aapt resource value: 0x7f05005b
-			public const int common_google_signin_btn_text_dark = 2131034203;
+			// aapt resource value: 0x7f05006e
+			public const int common_google_signin_btn_text_dark = 2131034222;
 			
 			// aapt resource value: 0x7f05000f
 			public const int common_google_signin_btn_text_dark_default = 2131034127;
@@ -919,8 +931,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f050010
 			public const int common_google_signin_btn_text_dark_pressed = 2131034128;
 			
-			// aapt resource value: 0x7f05005c
-			public const int common_google_signin_btn_text_light = 2131034204;
+			// aapt resource value: 0x7f05006f
+			public const int common_google_signin_btn_text_light = 2131034223;
 			
 			// aapt resource value: 0x7f050013
 			public const int common_google_signin_btn_text_light_default = 2131034131;
@@ -934,8 +946,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f050014
 			public const int common_google_signin_btn_text_light_pressed = 2131034132;
 			
-			// aapt resource value: 0x7f05005d
-			public const int common_plus_signin_btn_text_dark = 2131034205;
+			// aapt resource value: 0x7f050070
+			public const int common_plus_signin_btn_text_dark = 2131034224;
 			
 			// aapt resource value: 0x7f050006
 			public const int common_plus_signin_btn_text_dark_default = 2131034118;
@@ -949,8 +961,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f050007
 			public const int common_plus_signin_btn_text_dark_pressed = 2131034119;
 			
-			// aapt resource value: 0x7f05005e
-			public const int common_plus_signin_btn_text_light = 2131034206;
+			// aapt resource value: 0x7f050071
+			public const int common_plus_signin_btn_text_light = 2131034225;
 			
 			// aapt resource value: 0x7f05000a
 			public const int common_plus_signin_btn_text_light_default = 2131034122;
@@ -982,6 +994,27 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f05002e
 			public const int foreground_material_light = 2131034158;
 			
+			// aapt resource value: 0x7f050056
+			public const int grey_100 = 2131034198;
+			
+			// aapt resource value: 0x7f050057
+			public const int grey_200 = 2131034199;
+			
+			// aapt resource value: 0x7f050058
+			public const int grey_300 = 2131034200;
+			
+			// aapt resource value: 0x7f050059
+			public const int grey_400 = 2131034201;
+			
+			// aapt resource value: 0x7f05005a
+			public const int grey_500 = 2131034202;
+			
+			// aapt resource value: 0x7f05005b
+			public const int grey_600 = 2131034203;
+			
+			// aapt resource value: 0x7f05005c
+			public const int grey_700 = 2131034204;
+			
 			// aapt resource value: 0x7f05002f
 			public const int highlighted_text_material_dark = 2131034159;
 			
@@ -993,6 +1026,9 @@ namespace DrawerLayout_V7_Tutorial
 			
 			// aapt resource value: 0x7f050032
 			public const int hint_foreground_material_light = 2131034162;
+			
+			// aapt resource value: 0x7f05005e
+			public const int indigo = 2131034206;
 			
 			// aapt resource value: 0x7f050051
 			public const int loginbg = 2131034193;
@@ -1032,6 +1068,15 @@ namespace DrawerLayout_V7_Tutorial
 			
 			// aapt resource value: 0x7f05003e
 			public const int material_grey_900 = 2131034174;
+			
+			// aapt resource value: 0x7f050052
+			public const int petrol_100 = 2131034194;
+			
+			// aapt resource value: 0x7f050053
+			public const int petrol_200 = 2131034195;
+			
+			// aapt resource value: 0x7f05005d
+			public const int pink = 2131034205;
 			
 			// aapt resource value: 0x7f050002
 			public const int place_autocomplete_prediction_primary_text = 2131034114;
@@ -1075,6 +1120,9 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f050046
 			public const int primary_text_disabled_material_light = 2131034182;
 			
+			// aapt resource value: 0x7f050063
+			public const int red = 2131034211;
+			
 			// aapt resource value: 0x7f050047
 			public const int ripple_material_dark = 2131034183;
 			
@@ -1099,17 +1147,26 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f05004e
 			public const int switch_thumb_disabled_material_light = 2131034190;
 			
-			// aapt resource value: 0x7f05005f
-			public const int switch_thumb_material_dark = 2131034207;
+			// aapt resource value: 0x7f050072
+			public const int switch_thumb_material_dark = 2131034226;
 			
-			// aapt resource value: 0x7f050060
-			public const int switch_thumb_material_light = 2131034208;
+			// aapt resource value: 0x7f050073
+			public const int switch_thumb_material_light = 2131034227;
 			
 			// aapt resource value: 0x7f05004f
 			public const int switch_thumb_normal_material_dark = 2131034191;
 			
 			// aapt resource value: 0x7f050050
 			public const int switch_thumb_normal_material_light = 2131034192;
+			
+			// aapt resource value: 0x7f050061
+			public const int violet_100 = 2131034209;
+			
+			// aapt resource value: 0x7f050062
+			public const int violet_200 = 2131034210;
+			
+			// aapt resource value: 0x7f050064
+			public const int yellow = 2131034212;
 			
 			static Color()
 			{
@@ -1783,8 +1840,29 @@ namespace DrawerLayout_V7_Tutorial
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f0b0062
+			public const int BtnLgnChoiceGuest = 2131427426;
+			
+			// aapt resource value: 0x7f0b0060
+			public const int BtnLgnChoiceLgn = 2131427424;
+			
+			// aapt resource value: 0x7f0b0061
+			public const int BtnLgnChoiceRegister = 2131427425;
+			
+			// aapt resource value: 0x7f0b0065
+			public const int BtnLgnLgnLogin = 2131427429;
+			
+			// aapt resource value: 0x7f0b0066
+			public const int BtnLgnLgnRegister = 2131427430;
+			
 			// aapt resource value: 0x7f0b0068
-			public const int action0 = 2131427432;
+			public const int BtnLgnRegister = 2131427432;
+			
+			// aapt resource value: 0x7f0b0069
+			public const int BtnLogin = 2131427433;
+			
+			// aapt resource value: 0x7f0b0070
+			public const int action0 = 2131427440;
 			
 			// aapt resource value: 0x7f0b004c
 			public const int action_bar = 2131427404;
@@ -1810,8 +1888,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b004d
 			public const int action_context_bar = 2131427405;
 			
-			// aapt resource value: 0x7f0b006c
-			public const int action_divider = 2131427436;
+			// aapt resource value: 0x7f0b0074
+			public const int action_divider = 2131427444;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -1828,8 +1906,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b002e
 			public const int action_mode_close_button = 2131427374;
 			
-			// aapt resource value: 0x7f0b007d
-			public const int action_refresh = 2131427453;
+			// aapt resource value: 0x7f0b0085
+			public const int action_refresh = 2131427461;
 			
 			// aapt resource value: 0x7f0b002f
 			public const int activity_chooser_view_content = 2131427375;
@@ -1855,14 +1933,14 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b0036
 			public const int buttonPanel = 2131427382;
 			
-			// aapt resource value: 0x7f0b0069
-			public const int cancel_action = 2131427433;
+			// aapt resource value: 0x7f0b0071
+			public const int cancel_action = 2131427441;
 			
 			// aapt resource value: 0x7f0b0044
 			public const int checkbox = 2131427396;
 			
-			// aapt resource value: 0x7f0b006f
-			public const int chronometer = 2131427439;
+			// aapt resource value: 0x7f0b0077
+			public const int chronometer = 2131427447;
 			
 			// aapt resource value: 0x7f0b0028
 			public const int collapseActionView = 2131427368;
@@ -1870,8 +1948,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b003c
 			public const int contentPanel = 2131427388;
 			
-			// aapt resource value: 0x7f0b0064
-			public const int content_frame = 2131427428;
+			// aapt resource value: 0x7f0b006c
+			public const int content_frame = 2131427436;
 			
 			// aapt resource value: 0x7f0b0042
 			public const int custom = 2131427394;
@@ -1891,8 +1969,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b0018
 			public const int disableHome = 2131427352;
 			
-			// aapt resource value: 0x7f0b0063
-			public const int drawer_layout = 2131427427;
+			// aapt resource value: 0x7f0b006b
+			public const int drawer_layout = 2131427435;
 			
 			// aapt resource value: 0x7f0b004e
 			public const int edit_query = 2131427406;
@@ -1900,8 +1978,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b0025
 			public const int end = 2131427365;
 			
-			// aapt resource value: 0x7f0b0074
-			public const int end_padder = 2131427444;
+			// aapt resource value: 0x7f0b007c
+			public const int end_padder = 2131427452;
 			
 			// aapt resource value: 0x7f0b0030
 			public const int expand_activities_button = 2131427376;
@@ -1933,20 +2011,29 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b0031
 			public const int image = 2131427377;
 			
-			// aapt resource value: 0x7f0b0073
-			public const int info = 2131427443;
+			// aapt resource value: 0x7f0b007b
+			public const int info = 2131427451;
 			
-			// aapt resource value: 0x7f0b0065
-			public const int left_drawer = 2131427429;
+			// aapt resource value: 0x7f0b0063
+			public const int input_email = 2131427427;
+			
+			// aapt resource value: 0x7f0b0064
+			public const int input_password = 2131427428;
+			
+			// aapt resource value: 0x7f0b0067
+			public const int input_username = 2131427431;
+			
+			// aapt resource value: 0x7f0b006d
+			public const int left_drawer = 2131427437;
 			
 			// aapt resource value: 0x7f0b0015
 			public const int light = 2131427349;
 			
-			// aapt resource value: 0x7f0b006d
-			public const int line1 = 2131427437;
+			// aapt resource value: 0x7f0b0075
+			public const int line1 = 2131427445;
 			
-			// aapt resource value: 0x7f0b0071
-			public const int line3 = 2131427441;
+			// aapt resource value: 0x7f0b0079
+			public const int line3 = 2131427449;
 			
 			// aapt resource value: 0x7f0b0016
 			public const int listMode = 2131427350;
@@ -1963,20 +2050,14 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b005d
 			public const int loginlayout = 2131427421;
 			
-			// aapt resource value: 0x7f0b0060
-			public const int loginloginlayout = 2131427424;
+			// aapt resource value: 0x7f0b006f
+			public const int map = 2131427439;
 			
-			// aapt resource value: 0x7f0b0061
-			public const int loginregisterlayout = 2131427425;
+			// aapt resource value: 0x7f0b006e
+			public const int mapslayout = 2131427438;
 			
-			// aapt resource value: 0x7f0b0067
-			public const int map = 2131427431;
-			
-			// aapt resource value: 0x7f0b0066
-			public const int mapslayout = 2131427430;
-			
-			// aapt resource value: 0x7f0b006b
-			public const int media_actions = 2131427435;
+			// aapt resource value: 0x7f0b0073
+			public const int media_actions = 2131427443;
 			
 			// aapt resource value: 0x7f0b0026
 			public const int middle = 2131427366;
@@ -1996,29 +2077,29 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b0038
 			public const int parentPanel = 2131427384;
 			
-			// aapt resource value: 0x7f0b0077
-			public const int place_autocomplete_clear_button = 2131427447;
+			// aapt resource value: 0x7f0b007f
+			public const int place_autocomplete_clear_button = 2131427455;
 			
-			// aapt resource value: 0x7f0b0079
-			public const int place_autocomplete_powered_by_google = 2131427449;
+			// aapt resource value: 0x7f0b0081
+			public const int place_autocomplete_powered_by_google = 2131427457;
 			
-			// aapt resource value: 0x7f0b007b
-			public const int place_autocomplete_prediction_primary_text = 2131427451;
+			// aapt resource value: 0x7f0b0083
+			public const int place_autocomplete_prediction_primary_text = 2131427459;
 			
-			// aapt resource value: 0x7f0b007c
-			public const int place_autocomplete_prediction_secondary_text = 2131427452;
+			// aapt resource value: 0x7f0b0084
+			public const int place_autocomplete_prediction_secondary_text = 2131427460;
 			
-			// aapt resource value: 0x7f0b007a
-			public const int place_autocomplete_progress = 2131427450;
+			// aapt resource value: 0x7f0b0082
+			public const int place_autocomplete_progress = 2131427458;
 			
-			// aapt resource value: 0x7f0b0075
-			public const int place_autocomplete_search_button = 2131427445;
+			// aapt resource value: 0x7f0b007d
+			public const int place_autocomplete_search_button = 2131427453;
 			
-			// aapt resource value: 0x7f0b0076
-			public const int place_autocomplete_search_input = 2131427446;
+			// aapt resource value: 0x7f0b007e
+			public const int place_autocomplete_search_input = 2131427454;
 			
-			// aapt resource value: 0x7f0b0078
-			public const int place_autocomplete_separator = 2131427448;
+			// aapt resource value: 0x7f0b0080
+			public const int place_autocomplete_separator = 2131427456;
 			
 			// aapt resource value: 0x7f0b0005
 			public const int progress_circular = 2131427333;
@@ -2107,8 +2188,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b0011
 			public const int standard = 2131427345;
 			
-			// aapt resource value: 0x7f0b006a
-			public const int status_bar_latest_event_content = 2131427434;
+			// aapt resource value: 0x7f0b0072
+			public const int status_bar_latest_event_content = 2131427442;
 			
 			// aapt resource value: 0x7f0b0057
 			public const int submit_area = 2131427415;
@@ -2119,11 +2200,11 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b000d
 			public const int terrain = 2131427341;
 			
-			// aapt resource value: 0x7f0b0072
-			public const int text = 2131427442;
+			// aapt resource value: 0x7f0b007a
+			public const int text = 2131427450;
 			
-			// aapt resource value: 0x7f0b0070
-			public const int text2 = 2131427440;
+			// aapt resource value: 0x7f0b0078
+			public const int text2 = 2131427448;
 			
 			// aapt resource value: 0x7f0b003f
 			public const int textSpacerNoButtons = 2131427391;
@@ -2131,8 +2212,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b005c
 			public const int textView1 = 2131427420;
 			
-			// aapt resource value: 0x7f0b006e
-			public const int time = 2131427438;
+			// aapt resource value: 0x7f0b0076
+			public const int time = 2131427446;
 			
 			// aapt resource value: 0x7f0b0035
 			public const int title = 2131427381;
@@ -2140,8 +2221,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b003a
 			public const int title_template = 2131427386;
 			
-			// aapt resource value: 0x7f0b0062
-			public const int toolbar = 2131427426;
+			// aapt resource value: 0x7f0b006a
+			public const int toolbar = 2131427434;
 			
 			// aapt resource value: 0x7f0b0039
 			public const int topPanel = 2131427385;
@@ -2534,8 +2615,11 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f070020
 			public const int common_signin_button_text_long = 2131165216;
 			
+			// aapt resource value: 0x7f07003a
+			public const int google_maps_key = 2131165242;
+			
 			// aapt resource value: 0x7f070039
-			public const int google_maps_key = 2131165241;
+			public const int guestMode = 2131165241;
 			
 			// aapt resource value: 0x7f070035
 			public const int hello = 2131165237;
@@ -2576,9 +2660,6 @@ namespace DrawerLayout_V7_Tutorial
 			
 			// aapt resource value: 0x7f0a0080
 			public const int Animation_AppCompat_DropDownUp = 2131361920;
-			
-			// aapt resource value: 0x7f0a0140
-			public const int AppTheme_Button = 2131362112;
 			
 			// aapt resource value: 0x7f0a0081
 			public const int Base_AlertDialog_AppCompat = 2131361921;
@@ -2997,14 +3078,14 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0a013c
 			public const int BtnStyleBlue = 2131362108;
 			
-			// aapt resource value: 0x7f0a013f
-			public const int BtnStyleFlatBlue = 2131362111;
-			
 			// aapt resource value: 0x7f0a013e
 			public const int BtnStyleGreen = 2131362110;
 			
 			// aapt resource value: 0x7f0a013d
 			public const int BtnStylePink = 2131362109;
+			
+			// aapt resource value: 0x7f0a013f
+			public const int LoginLoginEditText = 2131362111;
 			
 			// aapt resource value: 0x7f0a013b
 			public const int MyDrawerArrowStyle = 2131362107;

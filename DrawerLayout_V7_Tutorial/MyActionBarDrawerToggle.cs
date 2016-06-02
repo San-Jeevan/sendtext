@@ -22,11 +22,11 @@ namespace DrawerLayout_V7_Tutorial
 		public override void OnDrawerOpened (Android.Views.View drawerView)
 		{	
 			int drawerType = (int)drawerView.Tag;
+            
 
 			if (drawerType == 0)
 			{
 				base.OnDrawerOpened (drawerView);
-				mHostActivity.SupportActionBar.SetTitle(mOpenedResource);
 			}
 		}
 
@@ -37,7 +37,6 @@ namespace DrawerLayout_V7_Tutorial
 			if (drawerType == 0)
 			{
 				base.OnDrawerClosed (drawerView);
-				mHostActivity.SupportActionBar.SetTitle(mClosedResource);
 			}				
 		}
 
