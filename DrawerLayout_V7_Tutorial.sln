@@ -18,6 +18,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Other", "Other", "{2B7BC870
 		CreateTables.sql = CreateTables.sql
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logo", "Logo", "{1CE8A6FB-E678-43CB-BB9B-CBC37B4D3A20}"
+	ProjectSection(SolutionItems) = preProject
+		..\Users\Jeevan\Downloads\gpsfixicon\asdad.svg = ..\Users\Jeevan\Downloads\gpsfixicon\asdad.svg
+		..\Users\Jeevan\Downloads\gpsfixicon\favicon.ico = ..\Users\Jeevan\Downloads\gpsfixicon\favicon.ico
+		..\Users\Jeevan\Downloads\gpsfixicon\ic_launcher.zip = ..\Users\Jeevan\Downloads\gpsfixicon\ic_launcher.zip
+		..\Users\Jeevan\Downloads\gpsfixicon\main256.png = ..\Users\Jeevan\Downloads\gpsfixicon\main256.png
+		..\Users\Jeevan\Downloads\gpsfixicon\mainGimpFile.xcf = ..\Users\Jeevan\Downloads\gpsfixicon\mainGimpFile.xcf
+		..\Users\Jeevan\Downloads\gpsfixicon\MainWhitebg.xcf = ..\Users\Jeevan\Downloads\gpsfixicon\MainWhitebg.xcf
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +58,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1CE8A6FB-E678-43CB-BB9B-CBC37B4D3A20} = {2B7BC870-9373-49D1-8ADC-61350E2EC71B}
 	EndGlobalSection
 EndGlobal

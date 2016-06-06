@@ -14,7 +14,7 @@ using Java.Lang;
 
 namespace DrawerLayout_V7_Tutorial
 {
-	[Activity (Label = "GPS Fix", MainLauncher = true, Icon = "@drawable/icon", Theme="@style/MyTheme")]
+	[Activity (Label = "GPS Fix", MainLauncher = true, Icon = "@drawable/ic_launcher", Theme="@style/MyTheme")]
 	public class LoginActivity : AppCompatActivity
 	{
 

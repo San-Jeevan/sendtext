@@ -1,36 +1,61 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Threading;
+using Android.Animation;
 using Android.App;
 using Android.Content;
+using Android.Database;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using Android.Graphics;
 using Android.OS;
+using Android.Provider;
 using Android.Support.V4.Content;
 using Android.Util;
 using Android.Views;
 using Common.Models;
 using DrawerLayout_V7_Tutorial.Models;
-using Java.Text;
 using Newtonsoft.Json;
+using CursorLoader = Android.Support.V4.Content.CursorLoader;
+using Double = System.Double;
+using Thread = System.Threading.Thread;
 
 namespace DrawerLayout_V7_Tutorial
 {
+    class LatLngEvaluator : Java.Lang.Object, ITypeEvaluator
+    {
+        public Java.Lang.Object Evaluate(float fraction, Java.Lang.Object startValue, Java.Lang.Object endValue)
+        {
+            var start = (LatLng)startValue;
+            var end = (LatLng)endValue;
 
+            return new LatLng(start.Latitude + fraction * (end.Latitude - start.Latitude),
+                               start.Longitude + fraction * (end.Longitude - start.Longitude));
+        }
+    }
     internal class MapFragment : Fragment, IOnMapReadyCallback
     {
-
+        private Android.Gms.Maps.MapFragment mapFragment = null;
         private static GoogleMap nMap;
         static readonly List<LatLng> _recentCordinates = new List<LatLng>();
         private static Marker _myMarker;
         static readonly List<SessionParticipant> _SessionParticipants = new List<SessionParticipant>();
 
-        public static string CalculationByDistance(LatLng StartP, LatLng EndP)
+
+        public static void AnimateMarker(SessionParticipant participant, MarkerOptions markerOptions)
         {
-            float[] result = new float[1];
-            Android.Locations.Location.DistanceBetween(StartP.Latitude, StartP.Longitude, EndP.Latitude, EndP.Longitude, result);
-            return result[0].ToString("0.0");
+            var marker = participant.Marker;
+            var toPosition = markerOptions.Position;
+            long start = SystemClock.UptimeMillis();
+            Projection proj = nMap.Projection;
+            Point startPoint = proj.ToScreenLocation(marker.Position);
+            LatLng startLatLng = proj.FromScreenLocation(startPoint);
+            var evaluator = new LatLngEvaluator();
+            ObjectAnimator.OfObject(marker, "position", evaluator, startLatLng, toPosition)
+                .SetDuration(1000).Start();
+            //participant.Marker.Visible = false;
+            //participant.Marker.Remove();
+            participant.Marker = nMap.AddMarker(markerOptions);
         }
 
 
@@ -44,10 +69,9 @@ namespace DrawerLayout_V7_Tutorial
                 Double currentLatitude = intent.GetDoubleExtra("latitude", 0);
                 Double currentLongitude = intent.GetDoubleExtra("longitude", 0);
                 LatLng _newPosition = new LatLng(currentLatitude, currentLongitude);
-                if (_recentCordinates.Count==0) nMap.MoveCamera(CameraUpdateFactory.NewLatLngZoom(_newPosition, 15));
 
                 var circleCenter = new MarkerOptions();
-                
+
                 circleCenter.SetPosition(_newPosition);
                 circleCenter.SetSnippet("decdssf dsfdsfds");
                 circleCenter.SetTitle("yolo");
@@ -56,9 +80,17 @@ namespace DrawerLayout_V7_Tutorial
                 {
                     _myMarker.Visible = false;
                     _myMarker.Remove();
+
                 }
                 _myMarker = nMap.AddMarker(circleCenter);
+                if (_recentCordinates.Count == 0)
+                {
+                    var newcameraFocus = Common.CameraFocus(_SessionParticipants, _myMarker);
+                    nMap.AnimateCamera(newcameraFocus);
+                }
+
                 _recentCordinates.Add(_newPosition);
+
             }
         }
 
@@ -68,22 +100,24 @@ namespace DrawerLayout_V7_Tutorial
 
             public override void OnReceive(Context context, Intent intent)
             {
-                if (nMap == null) return;
                 string message = intent.GetStringExtra("updPacket");
-                var gpsPacket = JsonConvert.DeserializeObject<LocationUpdPacket>(message);
 
+                if (nMap == null) return;
+                var gpsPacket = JsonConvert.DeserializeObject<LocationUpdPacket>(message);
                 LatLng _newPosition = new LatLng(gpsPacket.Latitude, gpsPacket.Longitude);
                 var circleCenter = new MarkerOptions();
                 circleCenter.SetPosition(_newPosition);
 
-               
 
                 var existingMarker = _SessionParticipants.FirstOrDefault(x => x.SignalRId == gpsPacket.SignalRId);
                 if (existingMarker != null)
                 {
-                    //if Visible is not set to false before remove, it will leave a whitespace behind. Bug!
-                    existingMarker.Marker.Visible=false;
+                    //if Visible is not set to false before remove, it will leave a whitespace behind.Bug!
+                    existingMarker.Marker.Visible = false;
                     existingMarker.Marker.Remove();
+
+                    //TODO: Marker endanimation show new position
+                    //AnimateMarker(existingMarker, circleCenter);
                     existingMarker.Marker = nMap.AddMarker(circleCenter);
                 }
                 else
@@ -96,28 +130,80 @@ namespace DrawerLayout_V7_Tutorial
                     });
 
                     //zoom in to show both markers, initial
-                    LatLngBounds.Builder builder = new LatLngBounds.Builder();
-                    builder.Include(_myMarker.Position);
-                    builder.Include(_newPosition);
-                    LatLngBounds bounds = builder.Build();
-                    CameraUpdate cu = CameraUpdateFactory.NewLatLngBounds(bounds, 100);
-                    nMap.AnimateCamera(cu);
+                    if (_myMarker != null)
+                    {
+                        var newcameraFocus = Common.CameraFocus(_SessionParticipants, _myMarker);
+                        nMap.AnimateCamera(newcameraFocus);
+                    }
 
                 }
-               var distanceInMeter= CalculationByDistance(_newPosition, _myMarker.Position);
+            }
+
+
+        }
+
+        public class ParticipantStatusReceiver : BroadcastReceiver
+        {
+            public override void OnReceive(Context context, Intent intent)
+            {
+                string rawmessage = intent.GetStringExtra("updPacket");
+                var message = JsonConvert.DeserializeObject<StatusUpdPacket>(rawmessage);
+                if (message.Status == StatusType.Disconnected)
+                {
+                    for (var i = 0; i < _SessionParticipants.Count; i++)
+                    {
+                        if (_SessionParticipants[i].SignalRId == message.SignalRId)
+                        {
+                            var existingMarker = _SessionParticipants[i];
+                            if (existingMarker != null)
+                            {
+                                existingMarker.Marker.Visible = false;
+                                existingMarker.Marker.Remove();
+                            }
+                            _SessionParticipants.Remove(existingMarker);
+                        }
+                    }
+                }
+
+                else if (message.Status == StatusType.Connected)
+                {
+                    //SendLocationToInternet({ coords: { latitude: _myMarker.position.lat(), longitude: _myMarker.position.lng() } });
+                }
+
             }
         }
 
 
-        public override void OnViewCreated(View view, Bundle savedInstanceState)
+        private void SlowMethod()
         {
-            SetUpMap();
+            Thread.Sleep(1000);
+            mapFragment = new Android.Gms.Maps.MapFragment();
+
+            this.Activity.RunOnUiThread(() => mapFragment.GetMapAsync(this));
+            FragmentManager.BeginTransaction().Replace(Resource.Id.mapslayout, mapFragment).Commit();
+
+
+            //OWN LOCATION UPDATES
             var myReceiver = new MyCordinatesReceiver();
             LocalBroadcastManager.GetInstance(this.Activity).RegisterReceiver(
                myReceiver, new IntentFilter("PosUpdate"));
+
+            //PARTICIPANT LOCATION UPDATES
             var participantReceiver = new ParticipantCordReceiver();
             LocalBroadcastManager.GetInstance(this.Activity).RegisterReceiver(
                participantReceiver, new IntentFilter("ParticipantPosUpdate"));
+
+            //PARTICIPANT STATUS UPDATES
+            var participantStatusReceiver = new ParticipantStatusReceiver();
+            LocalBroadcastManager.GetInstance(this.Activity).RegisterReceiver(
+               participantStatusReceiver, new IntentFilter("ParticipantStatusUpdate"));
+
+
+        }
+
+        public override void OnViewCreated(View view, Bundle savedInstanceState)
+        {
+            ThreadPool.QueueUserWorkItem(o => SlowMethod());
             base.OnViewCreated(view, savedInstanceState);
         }
 
@@ -126,7 +212,7 @@ namespace DrawerLayout_V7_Tutorial
             var manager = (ActivityManager)this.Activity.GetSystemService(Context.ActivityService);
             var mylist = manager.GetRunningServices(int.MaxValue).Where(
                 service => service.Service.ClassName.Contains(myservice));
-            if(mylist.Count()!= 0) return true;
+            if (mylist.Count() != 0) return true;
             return false;
         }
         public override View OnCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -136,27 +222,10 @@ namespace DrawerLayout_V7_Tutorial
                 // Currently in a layout without a container, so no reason to create our view.
                 return null;
             }
-
-          
             return inflater.Inflate(Resource.Layout.MapsLayout, container, false);
         }
 
 
-        private void SetUpMap()
-        {
-            if (nMap == null)
-            {
-                if (Build.VERSION.SdkInt > BuildVersionCodes.Kitkat)
-                {
-                    ChildFragmentManager.FindFragmentById<Android.Gms.Maps.MapFragment>(Resource.Id.map).GetMapAsync(this);
-                }
-                else
-                {
-                    FragmentManager.FindFragmentById<Android.Gms.Maps.MapFragment>(Resource.Id.map).GetMapAsync(this);
-                }
-            
-            }
-        }
         public void OnMapReady(GoogleMap googleMap)
         {
             nMap = googleMap;
@@ -167,13 +236,60 @@ namespace DrawerLayout_V7_Tutorial
             var alreadyrunning = IsServiceRunning("GPSservice");
             if (!alreadyrunning)
             {
-                //this.Activity.StartService(new Intent(this.Activity, typeof(GPSservice)));
-                new Task(() => {
-                    Android.App.Application.Context.StartService(new Intent(this.Activity, typeof(GPSservice)));
-                   }).Start(); 
+                Android.App.Application.Context.StartService(new Intent(this.Activity, typeof(GPSservice)));
             }
             base.OnResume();
         }
+
+
+
+        private void JobTypeListClicked(object sender, DialogClickEventArgs eventargs)
+        {
+            var test = "sdds";
+        }
+
+        private List<string> GetContactList()
+        {
+            var uri = ContactsContract.CommonDataKinds.Phone.ContentUri.BuildUpon()
+        .AppendQueryParameter(ContactsContract.RemoveDuplicateEntries, "1")
+        .Build();
+            List<string> contacts = new List<string>();
+            string[] projection = {
+                             ContactsContract.Contacts.InterfaceConsts.Id,
+                              ContactsContract.Contacts.InterfaceConsts.DisplayName,
+                         ContactsContract.CommonDataKinds.Phone.Number
+            };
+            var loader = new CursorLoader(this.Activity, uri, projection, null, null, null);
+            var cursor = (ICursor)loader.LoadInBackground();
+
+            cursor.MoveToFirst();
+            do
+            {
+                var ContactId = cursor.GetLong(cursor.GetColumnIndex(projection[0]));
+                var Name = cursor.GetString(cursor.GetColumnIndex(projection[1]));
+                var number = cursor.GetString(cursor.GetColumnIndex(projection[2]));
+                contacts.Add(Name);
+                Log.Debug("smedrix", Name + " " + number);
+
+            } while (cursor.MoveToNext());
+            return contacts;
+        }
+
+        public void AddParticipantBtnClicked()
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this.Activity);
+            builder.SetTitle("Select participant to invite");
+            var initialcontacts = GetContactList();
+            string[] contacts = initialcontacts.Select(o => o).ToArray();
+            builder.SetSingleChoiceItems(contacts, -1, JobTypeListClicked);
+
+            builder.SetNegativeButton("Cancel", (sender, args) =>
+            {
+
+            });
+
+            AlertDialog dialog = builder.Create();
+            dialog.Show();
+        }
     }
-       
 }

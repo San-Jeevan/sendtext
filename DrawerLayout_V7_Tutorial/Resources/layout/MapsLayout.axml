@@ -3,10 +3,4 @@
     android:id="@+id/mapslayout"
     android:orientation="vertical"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-    <fragment
-        android:id="@+id/map"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:name="com.google.android.gms.maps.MapFragment" />
-</LinearLayout>
+    android:layout_height="fill_parent" />

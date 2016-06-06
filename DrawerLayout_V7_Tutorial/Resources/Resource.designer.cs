@@ -1807,25 +1807,31 @@ namespace DrawerLayout_V7_Tutorial
 			public const int ic_action_refresh = 2130837622;
 			
 			// aapt resource value: 0x7f020077
-			public const int ic_menu = 2130837623;
+			public const int ic_add_white_24dp = 2130837623;
 			
 			// aapt resource value: 0x7f020078
-			public const int Icon = 2130837624;
-			
-			// aapt resource value: 0x7f02007d
-			public const int notification_template_icon_bg = 2130837629;
+			public const int ic_launcher = 2130837624;
 			
 			// aapt resource value: 0x7f020079
-			public const int places_ic_clear = 2130837625;
+			public const int ic_menu = 2130837625;
 			
 			// aapt resource value: 0x7f02007a
-			public const int places_ic_search = 2130837626;
+			public const int Icon = 2130837626;
+			
+			// aapt resource value: 0x7f02007f
+			public const int notification_template_icon_bg = 2130837631;
 			
 			// aapt resource value: 0x7f02007b
-			public const int powered_by_google_dark = 2130837627;
+			public const int places_ic_clear = 2130837627;
 			
 			// aapt resource value: 0x7f02007c
-			public const int powered_by_google_light = 2130837628;
+			public const int places_ic_search = 2130837628;
+			
+			// aapt resource value: 0x7f02007d
+			public const int powered_by_google_dark = 2130837629;
+			
+			// aapt resource value: 0x7f02007e
+			public const int powered_by_google_light = 2130837630;
 			
 			static Drawable()
 			{
@@ -1861,8 +1867,11 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b0069
 			public const int BtnLogin = 2131427433;
 			
-			// aapt resource value: 0x7f0b0070
-			public const int action0 = 2131427440;
+			// aapt resource value: 0x7f0b006f
+			public const int action0 = 2131427439;
+			
+			// aapt resource value: 0x7f0b0084
+			public const int action_addparticipant = 2131427460;
 			
 			// aapt resource value: 0x7f0b004c
 			public const int action_bar = 2131427404;
@@ -1888,8 +1897,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b004d
 			public const int action_context_bar = 2131427405;
 			
-			// aapt resource value: 0x7f0b0074
-			public const int action_divider = 2131427444;
+			// aapt resource value: 0x7f0b0073
+			public const int action_divider = 2131427443;
 			
 			// aapt resource value: 0x7f0b0002
 			public const int action_menu_divider = 2131427330;
@@ -1905,9 +1914,6 @@ namespace DrawerLayout_V7_Tutorial
 			
 			// aapt resource value: 0x7f0b002e
 			public const int action_mode_close_button = 2131427374;
-			
-			// aapt resource value: 0x7f0b0085
-			public const int action_refresh = 2131427461;
 			
 			// aapt resource value: 0x7f0b002f
 			public const int activity_chooser_view_content = 2131427375;
@@ -1933,14 +1939,14 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b0036
 			public const int buttonPanel = 2131427382;
 			
-			// aapt resource value: 0x7f0b0071
-			public const int cancel_action = 2131427441;
+			// aapt resource value: 0x7f0b0070
+			public const int cancel_action = 2131427440;
 			
 			// aapt resource value: 0x7f0b0044
 			public const int checkbox = 2131427396;
 			
-			// aapt resource value: 0x7f0b0077
-			public const int chronometer = 2131427447;
+			// aapt resource value: 0x7f0b0076
+			public const int chronometer = 2131427446;
 			
 			// aapt resource value: 0x7f0b0028
 			public const int collapseActionView = 2131427368;
@@ -1978,8 +1984,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b0025
 			public const int end = 2131427365;
 			
-			// aapt resource value: 0x7f0b007c
-			public const int end_padder = 2131427452;
+			// aapt resource value: 0x7f0b007b
+			public const int end_padder = 2131427451;
 			
 			// aapt resource value: 0x7f0b0030
 			public const int expand_activities_button = 2131427376;
@@ -2011,8 +2017,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b0031
 			public const int image = 2131427377;
 			
-			// aapt resource value: 0x7f0b007b
-			public const int info = 2131427451;
+			// aapt resource value: 0x7f0b007a
+			public const int info = 2131427450;
 			
 			// aapt resource value: 0x7f0b0063
 			public const int input_email = 2131427427;
@@ -2029,11 +2035,11 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b0015
 			public const int light = 2131427349;
 			
-			// aapt resource value: 0x7f0b0075
-			public const int line1 = 2131427445;
+			// aapt resource value: 0x7f0b0074
+			public const int line1 = 2131427444;
 			
-			// aapt resource value: 0x7f0b0079
-			public const int line3 = 2131427449;
+			// aapt resource value: 0x7f0b0078
+			public const int line3 = 2131427448;
 			
 			// aapt resource value: 0x7f0b0016
 			public const int listMode = 2131427350;
@@ -2050,14 +2056,11 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b005d
 			public const int loginlayout = 2131427421;
 			
-			// aapt resource value: 0x7f0b006f
-			public const int map = 2131427439;
-			
 			// aapt resource value: 0x7f0b006e
 			public const int mapslayout = 2131427438;
 			
-			// aapt resource value: 0x7f0b0073
-			public const int media_actions = 2131427443;
+			// aapt resource value: 0x7f0b0072
+			public const int media_actions = 2131427442;
 			
 			// aapt resource value: 0x7f0b0026
 			public const int middle = 2131427366;
@@ -2077,29 +2080,29 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b0038
 			public const int parentPanel = 2131427384;
 			
-			// aapt resource value: 0x7f0b007f
-			public const int place_autocomplete_clear_button = 2131427455;
-			
-			// aapt resource value: 0x7f0b0081
-			public const int place_autocomplete_powered_by_google = 2131427457;
-			
-			// aapt resource value: 0x7f0b0083
-			public const int place_autocomplete_prediction_primary_text = 2131427459;
-			
-			// aapt resource value: 0x7f0b0084
-			public const int place_autocomplete_prediction_secondary_text = 2131427460;
-			
-			// aapt resource value: 0x7f0b0082
-			public const int place_autocomplete_progress = 2131427458;
-			
-			// aapt resource value: 0x7f0b007d
-			public const int place_autocomplete_search_button = 2131427453;
-			
 			// aapt resource value: 0x7f0b007e
-			public const int place_autocomplete_search_input = 2131427454;
+			public const int place_autocomplete_clear_button = 2131427454;
 			
 			// aapt resource value: 0x7f0b0080
-			public const int place_autocomplete_separator = 2131427456;
+			public const int place_autocomplete_powered_by_google = 2131427456;
+			
+			// aapt resource value: 0x7f0b0082
+			public const int place_autocomplete_prediction_primary_text = 2131427458;
+			
+			// aapt resource value: 0x7f0b0083
+			public const int place_autocomplete_prediction_secondary_text = 2131427459;
+			
+			// aapt resource value: 0x7f0b0081
+			public const int place_autocomplete_progress = 2131427457;
+			
+			// aapt resource value: 0x7f0b007c
+			public const int place_autocomplete_search_button = 2131427452;
+			
+			// aapt resource value: 0x7f0b007d
+			public const int place_autocomplete_search_input = 2131427453;
+			
+			// aapt resource value: 0x7f0b007f
+			public const int place_autocomplete_separator = 2131427455;
 			
 			// aapt resource value: 0x7f0b0005
 			public const int progress_circular = 2131427333;
@@ -2188,8 +2191,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b0011
 			public const int standard = 2131427345;
 			
-			// aapt resource value: 0x7f0b0072
-			public const int status_bar_latest_event_content = 2131427442;
+			// aapt resource value: 0x7f0b0071
+			public const int status_bar_latest_event_content = 2131427441;
 			
 			// aapt resource value: 0x7f0b0057
 			public const int submit_area = 2131427415;
@@ -2200,11 +2203,11 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b000d
 			public const int terrain = 2131427341;
 			
-			// aapt resource value: 0x7f0b007a
-			public const int text = 2131427450;
+			// aapt resource value: 0x7f0b0079
+			public const int text = 2131427449;
 			
-			// aapt resource value: 0x7f0b0078
-			public const int text2 = 2131427448;
+			// aapt resource value: 0x7f0b0077
+			public const int text2 = 2131427447;
 			
 			// aapt resource value: 0x7f0b003f
 			public const int textSpacerNoButtons = 2131427391;
@@ -2212,8 +2215,8 @@ namespace DrawerLayout_V7_Tutorial
 			// aapt resource value: 0x7f0b005c
 			public const int textView1 = 2131427420;
 			
-			// aapt resource value: 0x7f0b0076
-			public const int time = 2131427446;
+			// aapt resource value: 0x7f0b0075
+			public const int time = 2131427445;
 			
 			// aapt resource value: 0x7f0b0035
 			public const int title = 2131427381;

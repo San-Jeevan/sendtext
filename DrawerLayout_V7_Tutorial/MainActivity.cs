@@ -16,7 +16,7 @@ using Java.Lang;
 
 namespace DrawerLayout_V7_Tutorial
 {
-	[Activity (Label = "GPS Fix", MainLauncher = false, Icon = "@drawable/icon", Theme="@style/MyTheme")]
+	[Activity (Label = "GPS Fix", MainLauncher = false, Theme="@style/MyTheme")]
 	public class MainActivity : AppCompatActivity
     {
 		private SupportToolbar mToolbar;
@@ -28,6 +28,7 @@ namespace DrawerLayout_V7_Tutorial
 
         private ViewFlipper _flipper;
         private Button btnPrev, btnNext;
+	    private MapFragment mapFragment = null;
 
 
 	    protected override void OnPause()
@@ -100,7 +101,7 @@ namespace DrawerLayout_V7_Tutorial
             mDrawerLayout.AddDrawerListener(mDrawerToggle);
             SupportActionBar.SetHomeButtonEnabled(true);
             SupportActionBar.SetDisplayShowTitleEnabled(true);
-            mToolbar.SetNavigationIcon(Resource.Drawable.abc_ic_menu_moreoverflow_mtrl_alpha);
+            mToolbar.SetNavigationIcon(Resource.Drawable.ic_menu);
             mDrawerToggle.SyncState();
            
 
@@ -115,8 +116,9 @@ namespace DrawerLayout_V7_Tutorial
 				mDrawerToggle.OnOptionsItemSelected(item);
 				return true;
 
-			case Resource.Id.action_refresh:
-				return true;
+			case Resource.Id.action_addparticipant:
+			     mapFragment.AddParticipantBtnClicked();
+                return true;
 
 			default:
 				return base.OnOptionsItemSelected (item);
@@ -134,7 +136,7 @@ namespace DrawerLayout_V7_Tutorial
 			if (mDrawerLayout.IsDrawerOpen((int)GravityFlags.Left))
 			{
 				outState.PutString("DrawerState", "Opened");
-			}
+            }
 
 			else
 			{
@@ -153,7 +155,8 @@ namespace DrawerLayout_V7_Tutorial
 
 	    protected override void OnResume()
 	    {
-            FragmentManager.BeginTransaction().Replace(Resource.Id.content_frame, new MapFragment()).Commit();
+	        mapFragment = new MapFragment();
+            FragmentManager.BeginTransaction().Replace(Resource.Id.content_frame, mapFragment).Commit();
             base.OnResume();
 	    }
 

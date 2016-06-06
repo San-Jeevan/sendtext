@@ -50,7 +50,7 @@ namespace DrawerLayout_V7_Tutorial
                     locRequest.Priority.ToString(), locRequest.Interval.ToString());
 
                 // pass in a location request and LocationListener
-                LocationServices.FusedLocationApi.RequestLocationUpdates(apiClient, locRequest, this);
+                LocationServices.FusedLocationApi.RequestLocationUpdates(apiClient, locRequest, this, Looper.MainLooper);
         }
 
         public override void OnDestroy()
@@ -94,23 +94,11 @@ namespace DrawerLayout_V7_Tutorial
 
         public override StartCommandResult OnStartCommand(Intent intent, StartCommandFlags flags, int startId)
         {
-            hubConnection = new HubConnection("http://snuskelabben.cloudapp.net:8022");
+            hubConnection = new HubConnection("http://ws2.gpsfix.io");
             hubProxy = hubConnection.CreateHubProxy("GpsHub");
             hubProxy.On<string>("LocationUpdate", OnSignalRMessage);
             hubConnection.StateChanged += HubConnection_StateChanged;
-            hubConnection.Start().ContinueWith(task =>
-            {
-                if (task.IsFaulted)
-                {
-                    Log.Error("LocationClient", "SignalrState: " + task.Exception.GetBaseException());
-                    Console.WriteLine("Failed to start: {0}", task.Exception.GetBaseException());
-                }
-                else
-                {
-                    Console.WriteLine("Success! Connected with client connection id {0}", hubConnection.ConnectionId);
-                    // Do more stuff here
-                }
-            });
+         
 
             hubConnection.Error += ex => Console.WriteLine("An error occurred {0}", ex.Message);
 
@@ -152,6 +140,7 @@ namespace DrawerLayout_V7_Tutorial
             if (stateChange.NewState == ConnectionState.Connected)
             {
                 hubProxy.Invoke("JoinSession", "testroom");
+                
             }
             if (stateChange.NewState == ConnectionState.Disconnected) return;
             if (stateChange.NewState == ConnectionState.Reconnecting) return;
@@ -160,7 +149,6 @@ namespace DrawerLayout_V7_Tutorial
 
         public override IBinder OnBind(Intent intent)
         {
-           
             return null;
         }
 
@@ -186,9 +174,25 @@ namespace DrawerLayout_V7_Tutorial
 
         public void OnConnected(Bundle connectionHint)
         {
-            Toast.MakeText(this, "Now connected to client", ToastLength.Short).Show();
-            Log.Info("LocationClient", "Now connected to client");
-            startGps();
+            Toast.MakeText(this, "Connected to GOOGLEAPI CLIENT", ToastLength.Short).Show();
+            Log.Info("LocationClient", "connected GOOGLEAPI CLIENT");
+
+            hubConnection.Start().ContinueWith(task =>
+            {
+                if (task.IsFaulted)
+                {
+                    Log.Error("LocationClient", "SignalrState: " + task.Exception.GetBaseException());
+                    Console.WriteLine("Failed to start: {0}", task.Exception.GetBaseException());
+                }
+                else
+                {
+                    Console.WriteLine("Success! Connected with client connection id {0}", hubConnection.ConnectionId);
+                    startGps();
+                    // Do more stuff here
+                }
+            });
+            
+
         }
 
         public void OnConnectionSuspended(int cause)
@@ -209,13 +213,14 @@ namespace DrawerLayout_V7_Tutorial
         public void OnLocationChanged(Location location)
         {
             if (lastPosition.Latitude == location.Latitude && lastPosition.Longitude == location.Longitude) return;
+            
             lastPosition = new LatLng(location.Latitude, location.Longitude);
             Toast.MakeText(this, location.Latitude + ", " + location.Longitude, ToastLength.Short).Show();
             Log.Debug("LocationClient", "Location updated");
             
             Intent intent = new Intent("PosUpdate");
             SendLocationBroadcast(intent, location.Latitude, location.Longitude);
-            SendLocationToInternet(intent, location.Latitude, location.Longitude);
+            SendLocationToInternet(location.Latitude, location.Longitude);
         }
 
 
@@ -224,15 +229,26 @@ namespace DrawerLayout_V7_Tutorial
              var abstractpacket = JsonConvert.DeserializeObject<AbstractPacket>(message) ;
             //ignore our own packet.
             if (abstractpacket.SignalRId == hubConnection.ConnectionId) return;
+
+            //GPS POSITION UPDATE
             if (abstractpacket.Type == UpdateType.GpsUpdate)
             {
-                
                 Intent intent = new Intent("ParticipantPosUpdate");
                 SendOthersLocationBroadcast(intent, message);
             }
 
+            //STATUSUPDATE (CONNECTED/DISCONNECTED PARTICIPANT)
+            if (abstractpacket.Type == UpdateType.StatusUpdate)
+            {
+                Intent intent = new Intent("ParticipantStatusUpdate");
+                SendOthersLocationBroadcast(intent, message);
+
+                Intent intenttwo = new Intent("PosUpdate");
+                SendLocationToInternet(lastPosition.Latitude, lastPosition.Longitude);
+            }
+
         }
-        private void SendLocationToInternet(Intent intent, double latitude, double longitude)
+        private void SendLocationToInternet(double latitude, double longitude)
         {
             if (hubConnection.State == ConnectionState.Connected)
             {
