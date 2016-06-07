@@ -1,4 +1,4 @@
-﻿@model AddPhoneNumberViewModel
+@model AddPhoneNumberViewModel
 @{
     ViewData["Title"] = "Add Phone Number";
 }
@@ -12,7 +12,7 @@
         <label asp-for="PhoneNumber" class="col-md-2 control-label"></label>
         <div class="col-md-10">
             <input asp-for="PhoneNumber" class="form-control" />
-            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            <span asp-validation-for="PhoneNumber" class="text-danger">changefromac</span>
         </div>
     </div>
     <div class="form-group">
@@ -21,6 +21,8 @@
         </div>
     </div>
 </form>
+
+
 
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
