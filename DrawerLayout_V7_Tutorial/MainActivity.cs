@@ -66,7 +66,6 @@ namespace DrawerLayout_V7_Tutorial
 		{
 			base.OnCreate (bundle);
             SetContentView(Resource.Layout.Main);
-           
           
             string launchMode = Intent.GetStringExtra("Mode") ?? "Data not available";
             mToolbar = FindViewById<SupportToolbar> (Resource.Id.toolbar);

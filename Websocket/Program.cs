@@ -50,7 +50,7 @@ namespace Websocket
                 Groups.Remove(Context.ConnectionId, sessionName);
                 Clients.Group(sessionName).LocationUpdate(statusUpdate.ToString());
             }
-
+            Console.WriteLine("Disconnected {0}", Context.ConnectionId);
             return base.OnDisconnected(stopCalled);
         }
 

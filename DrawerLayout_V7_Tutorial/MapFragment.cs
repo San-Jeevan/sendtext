@@ -51,13 +51,21 @@ namespace DrawerLayout_V7_Tutorial
             Point startPoint = proj.ToScreenLocation(marker.Position);
             LatLng startLatLng = proj.FromScreenLocation(startPoint);
             var evaluator = new LatLngEvaluator();
-            ObjectAnimator.OfObject(marker, "position", evaluator, startLatLng, toPosition)
-                .SetDuration(1000).Start();
-            //participant.Marker.Visible = false;
-            //participant.Marker.Remove();
-            participant.Marker = nMap.AddMarker(markerOptions);
+            var animator = ObjectAnimator.OfObject(marker, "position", evaluator, startLatLng, toPosition)
+                .SetDuration(3000);
+            animator.AnimationEnd += Animator_AnimationEnd;
+            animator.Start();
         }
 
+        private static void Animator_AnimationEnd(object sender, System.EventArgs e)
+        {
+            //ObjectAnimator valueAnimator = (ObjectAnimator)sender;
+            //SessionParticipant participant = _SessionParticipants.Find(x => x.SignalRId == valueAnimator.PropertyName);
+            //var marker = (Marker)valueAnimator.Target;
+            //var circleCenter = new MarkerOptions();
+            //circleCenter.SetPosition(participant.Marker.Position);
+            //participant.Marker = nMap.AddMarker(circleCenter);
+        }
 
         [BroadcastReceiver(Enabled = true)]
         public class MyCordinatesReceiver : BroadcastReceiver
@@ -115,10 +123,10 @@ namespace DrawerLayout_V7_Tutorial
                     //if Visible is not set to false before remove, it will leave a whitespace behind.Bug!
                     existingMarker.Marker.Visible = false;
                     existingMarker.Marker.Remove();
+                    existingMarker.Marker = nMap.AddMarker(circleCenter);
 
                     //TODO: Marker endanimation show new position
                     //AnimateMarker(existingMarker, circleCenter);
-                    existingMarker.Marker = nMap.AddMarker(circleCenter);
                 }
                 else
                 {
