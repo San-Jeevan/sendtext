@@ -1,5 +1,7 @@
 ﻿using System;
 using CoreGraphics;
+using CoreLocation;
+using Foundation;
 using Google.Maps;
 using UIKit;
 using Microsoft.AspNet.SignalR.Client;
@@ -11,9 +13,12 @@ namespace iOS
         private MapView mapView;
         HubConnection hubConnection;
         IHubProxy hubProxy;
+        bool firstLocationUpdate;
         public FirstViewController(IntPtr handle) : base(handle)
         {
         }
+
+    
 
         public override void LoadView()
         {
@@ -22,32 +27,25 @@ namespace iOS
                                             longitude: -122.40,
                                             zoom: 6);
             mapView = MapView.FromCamera(CGRect.Empty, camera);
-            mapView.MyLocationEnabled = true;
+            
+
+            mapView.AddObserver(this, new NSString("myLocation"), NSKeyValueObservingOptions.New, IntPtr.Zero);
             View = mapView;
-
-            hubConnection = new HubConnection("http://ws2.gpsfix.io");
-            hubProxy = hubConnection.CreateHubProxy("GpsHub");
-            hubProxy.On<string>("LocationUpdate", OnSignalRMessage);
-            hubConnection.StateChanged += HubConnection_StateChanged;
-
-            hubConnection.Error += ex => Console.WriteLine("An error occurred {0}", ex.Message);
-
-            hubConnection.Closed += () => Console.WriteLine("Connection with client id {0} closed", hubConnection.ConnectionId);
-            hubConnection.Start().ContinueWith(task =>
-            {
-                if (task.IsFaulted)
-                {
-                    Console.WriteLine("Failed to start: {0}", task.Exception.GetBaseException());
-                }
-                else
-                {
-                    Console.WriteLine("Success! Connected with client connection id {0}", hubConnection.ConnectionId);
-
-                }
-            });
+            InvokeOnMainThread(() => mapView.MyLocationEnabled = true);
 
 
 
+        }
+
+        public override void ObserveValue(NSString keyPath, NSObject ofObject, NSDictionary change, IntPtr context)
+        {
+            //base.ObserveValue (keyPath, ofObject, change, context);
+
+                var location = change.ObjectForKey(NSValue.ChangeNewKey) as CLLocation;
+                Console.WriteLine(location.Coordinate.Longitude);
+                Console.WriteLine(location.Coordinate.Latitude);
+                mapView.Camera = CameraPosition.FromCamera(location.Coordinate, 14);
+            
         }
 
         private void OnSignalRMessage(string message)
