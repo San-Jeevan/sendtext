@@ -30,16 +30,8 @@ namespace iOS
 
         public static void startGps()
         {
-            if (locMgr != null)
-            {
-                locMgr.StopUpdatingLocation();
-                return;
-            }
             locMgr = new CLLocationManager();
             locMgr.PausesLocationUpdatesAutomatically = false;
-
-
-            
             if (UIDevice.CurrentDevice.CheckSystemVersion(6, 0))
             {
                 locMgr.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) =>
@@ -51,7 +43,6 @@ namespace iOS
                         object[] wordsToSend = new object[] { "testroom", JsonConvert.SerializeObject(update) };
                         hubProxy.Invoke("sendSessionMessage", wordsToSend);
                     }
-
                 };
             }
             else
@@ -65,7 +56,6 @@ namespace iOS
                         object[] wordsToSend = new object[] { "testroom", JsonConvert.SerializeObject(update) };
                         hubProxy.Invoke("sendSessionMessage", wordsToSend);
                     }
-
                 };
 
             }
@@ -87,6 +77,7 @@ namespace iOS
             {
                 locMgr.StopUpdatingLocation();
                 locMgr.Dispose();
+                locMgr = null;
             });
 
             new Task(() => {
