@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using Common.Models;
 using CoreBluetooth;
 using CoreLocation;
+using Foundation;
 using Microsoft.AspNet.SignalR.Client;
 using Newtonsoft.Json;
 using UIKit;
@@ -15,86 +19,102 @@ namespace iOS
 
 
 
-    public class GpsService
+    public static class GpsService
     {
-        HubConnection hubConnection;
-        IHubProxy hubProxy;
-        private string lastPosition = "";
-        private static CLLocationManager locMgr;
+        static HubConnection hubConnection;
+        static IHubProxy hubProxy;
+        private static string lastPosition = "";
+        static CLLocationManager locMgr =null;
 
 
-        public void OnLocationChanged(object sender, CLLocationsUpdatedEventArgs location)
+
+        public static void startGps()
         {
-            Console.WriteLine(location.Locations.FirstOrDefault().Coordinate.Longitude);
-            Console.WriteLine(location.Locations.FirstOrDefault().Coordinate.Latitude);
-            Console.WriteLine(location.Locations.Length);
-        }
-
-
-        public void startGps()
-        {
-            // Setting location priority to PRIORITY_HIGH_ACCURACY (100)
+            if (locMgr != null)
+            {
+                locMgr.StopUpdatingLocation();
+                return;
+            }
             locMgr = new CLLocationManager();
             locMgr.PausesLocationUpdatesAutomatically = false;
 
-            if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+
+            
+            if (UIDevice.CurrentDevice.CheckSystemVersion(6, 0))
             {
-                locMgr.RequestAlwaysAuthorization(); 
+                locMgr.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) =>
+                {
+                    var l = e.Locations[e.Locations.Length-1];
+                    if (hubConnection.State == ConnectionState.Connected)
+                    {
+                        var update = new LocationUpdPacket { SignalRId = hubConnection.ConnectionId, Latitude = l.Coordinate.Latitude, Longitude = l.Coordinate.Longitude, Type = UpdateType.GpsUpdate };
+                        object[] wordsToSend = new object[] { "testroom", JsonConvert.SerializeObject(update) };
+                        hubProxy.Invoke("sendSessionMessage", wordsToSend);
+                    }
+
+                };
+            }
+            else
+            {
+                locMgr.UpdatedLocation += (object sender, CLLocationUpdatedEventArgs e) =>
+                {
+                    var l = e.NewLocation;
+                    if (hubConnection.State == ConnectionState.Connected)
+                    {
+                        var update = new LocationUpdPacket { SignalRId = hubConnection.ConnectionId, Latitude = l.Coordinate.Latitude, Longitude = l.Coordinate.Longitude, Type = UpdateType.GpsUpdate };
+                        object[] wordsToSend = new object[] { "testroom", JsonConvert.SerializeObject(update) };
+                        hubProxy.Invoke("sendSessionMessage", wordsToSend);
+                    }
+
+                };
+
             }
 
-            if (UIDevice.CurrentDevice.CheckSystemVersion(9, 0))
+            if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
             {
-                locMgr.AllowsBackgroundLocationUpdates = true;
+                locMgr.RequestWhenInUseAuthorization();
             }
 
             if (CLLocationManager.LocationServicesEnabled)
-            {
-                locMgr.DesiredAccuracy = 1;
-                //locMgr.LocationsUpdated += OnLocationChanged;
-                locMgr.DistanceFilter = CLLocationDistance.FilterNone;
-                locMgr.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) =>
-                {
-                    Destroy();
-                };
-                locMgr.StartUpdatingLocation();
-            }
-          
+            locMgr.StartUpdatingLocation();
 
         }
 
-        public void Destroy()
+        public static void Destroy()
         {
-                new Task(() => {
+            var myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
+            myDelegate.InvokeOnMainThread(() =>
+            {
+                locMgr.StopUpdatingLocation();
+                locMgr.Dispose();
+            });
+
+            new Task(() => {
                     hubConnection.Stop();
                     hubConnection.Dispose();
-                }).Start();
+              }).Start();
         }
 
 
-        public void Start()
+        public static void Start()
         {
-            hubConnection = new HubConnection("http://ws2.gpsfix.io");
+            hubConnection = new HubConnection("http://snuskelabben.cloudapp.net/");
             hubProxy = hubConnection.CreateHubProxy("GpsHub");
             hubProxy.On<string>("LocationUpdate", OnSignalRMessage);
             hubConnection.StateChanged += HubConnection_StateChanged;
 
-
             hubConnection.Error += ex => Console.WriteLine("An error occurred {0}", ex.Message);
-
             hubConnection.Closed += () => Console.WriteLine("Connection with client id {0} closed", hubConnection.ConnectionId);
-
 
             hubConnection.Start().ContinueWith(task =>
             {
                 if (task.IsFaulted)
                 {
-                   
                     Console.WriteLine("Failed to start: {0}", task.Exception.GetBaseException());
                 }
                 else
                 {
                     Console.WriteLine("Success! Connected with client connection id {0}", hubConnection.ConnectionId);
-                    startGps();
                     // Do more stuff here
                 }
             });
@@ -102,11 +122,13 @@ namespace iOS
         }
 
 
-        private void HubConnection_StateChanged(StateChange stateChange)
+        private static void HubConnection_StateChanged(StateChange stateChange)
         {
             if (stateChange.NewState == ConnectionState.Connected)
             {
                 hubProxy.Invoke("JoinSession", "testroom");
+                var myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
+                myDelegate.InvokeOnMainThread(startGps);
 
             }
             if (stateChange.NewState == ConnectionState.Disconnected) return;
@@ -115,7 +137,7 @@ namespace iOS
         }
 
 
-        private void OnSignalRMessage(string message)
+        private static void OnSignalRMessage(string message)
         {
             //var abstractpacket = JsonConvert.DeserializeObject<AbstractPacket>(message);
             ////ignore our own packet.

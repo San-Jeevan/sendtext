@@ -1,24 +1,21 @@
 ﻿using System;
+using Common.Models;
 using CoreGraphics;
 using CoreLocation;
 using Foundation;
 using Google.Maps;
 using UIKit;
 using Microsoft.AspNet.SignalR.Client;
+using Newtonsoft.Json;
 
 namespace iOS
 {
     public partial class FirstViewController : UIViewController
     {
         private MapView mapView;
-        HubConnection hubConnection;
-        IHubProxy hubProxy;
-        bool firstLocationUpdate;
-        public FirstViewController(IntPtr handle) : base(handle)
+     public FirstViewController(IntPtr handle) : base(handle)
         {
         }
-
-    
 
         public override void LoadView()
         {
@@ -31,10 +28,8 @@ namespace iOS
 
             mapView.AddObserver(this, new NSString("myLocation"), NSKeyValueObservingOptions.New, IntPtr.Zero);
             View = mapView;
-            InvokeOnMainThread(() => mapView.MyLocationEnabled = true);
-
-
-
+            //InvokeOnMainThread(() => mapView.MyLocationEnabled = true);
+            
         }
 
         public override void ObserveValue(NSString keyPath, NSObject ofObject, NSDictionary change, IntPtr context)
@@ -48,34 +43,6 @@ namespace iOS
             
         }
 
-        private void OnSignalRMessage(string message)
-        {
-           
 
-        }
-
-        private void HubConnection_StateChanged(StateChange stateChange)
-        {
-            if (stateChange.NewState == ConnectionState.Connected)
-            {
-                hubProxy.Invoke("JoinSession", "testroom");
-
-            }
-            if (stateChange.NewState == ConnectionState.Disconnected) return;
-            if (stateChange.NewState == ConnectionState.Reconnecting) return;
-            if (stateChange.NewState == ConnectionState.Connecting) return;
-        }
-
-        public override void ViewDidLoad()
-        {
-            base.ViewDidLoad();
-            // Perform any additional setup after loading the view, typically from a nib.
-        }
-
-        public override void DidReceiveMemoryWarning()
-        {
-            base.DidReceiveMemoryWarning();
-            // Release any cached data, images, etc that aren't in use.
-        }
     }
 }
