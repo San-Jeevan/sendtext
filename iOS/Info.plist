@@ -14,14 +14,13 @@
 	<true/>
 	<key>MinimumOSVersion</key>
 	<string>9.0</string>
-<key>NSLocationUsageDescription</key>
+	<key>NSLocationUsageDescription</key>
 	<string>Ineed location</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Ineed location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Ineed location</string>
-			
-<key>UIDeviceFamily</key>
+	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
 	</array>
@@ -40,9 +39,6 @@
 		<string>Icon@2x.png</string>
 		<string>Icon.png</string>
 		<string>Icon-60@2x.png</string>
-		<string>Default.png</string>
-		<string>Default@2x.png</string>
-		<string>Default-568h@2x.png</string>
 		<string>Icon-Small@2x.png</string>
 		<string>Icon-Small.png</string>
 		<string>Icon-Small-40@2x.png</string>
@@ -52,8 +48,7 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
+		<string>remote-notification</string>
 	</array>
-
- 
 </dict>
 </plist>

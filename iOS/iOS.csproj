@@ -26,7 +26,7 @@
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
     <CodesignKey>iPhone Developer: Sangeepan Sivagnanasuntharam (ZNBLX7A9XP)</CodesignKey>
-    <CodesignProvision />
+    <CodesignProvision>3d5e1f37-0a62-4901-bdaf-cdfe3fe0ff3d</CodesignProvision>
     <CodesignEntitlements />
     <CodesignResourceRules />
     <CodesignExtraArgs />
@@ -54,7 +54,7 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <CodesignKey>iPhone Developer: Sangeepan Sivagnanasuntharam (ZNBLX7A9XP)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignProvision>44108a50-98e9-4f45-a007-50418f0ce0ef</CodesignProvision>
+    <CodesignProvision>3d5e1f37-0a62-4901-bdaf-cdfe3fe0ff3d</CodesignProvision>
     <CodesignResourceRules />
     <CodesignExtraArgs />
   </PropertyGroup>
@@ -95,9 +95,12 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="APN\APNService.cs" />
     <Compile Include="GpsService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="REST\RESTService.cs" />
+    <Compile Include="SwipableTableView.cs" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -115,7 +118,9 @@
     <Compile Include="SecondViewController.designer.cs">
       <DependentUpon>SecondViewController.cs</DependentUpon>
     </Compile>
-    <InterfaceDefinition Include="Main.storyboard" />
+    <InterfaceDefinition Include="Main.storyboard">
+      <SubType>Designer</SubType>
+    </InterfaceDefinition>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json">
       <InProject>false</InProject>
     </ImageAsset>
@@ -133,6 +138,9 @@
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="FlyoutNavigation">
+      <HintPath>..\Components\flyoutnavigation-1.5.1\lib\ios-unified\FlyoutNavigation.dll</HintPath>
+    </Reference>
     <Reference Include="Google.Maps, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Xamarin.Google.iOS.Maps.1.13.1.0\lib\Xamarin.iOS10\Google.Maps.dll</HintPath>
       <Private>True</Private>
@@ -140,10 +148,12 @@
     <Reference Include="Microsoft.AspNet.SignalR.Client">
       <HintPath>..\Components\signalr-2.1.2.2\lib\ios-unified\Microsoft.AspNet.SignalR.Client.dll</HintPath>
     </Reference>
+    <Reference Include="MonoTouch.Dialog-1" />
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Components\signalr-2.1.2.2\lib\ios-unified\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Extensions">
       <HintPath>..\Components\signalr-2.1.2.2\lib\ios-unified\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
@@ -166,8 +176,14 @@
     <BundleResource Include="Resources\favico260.png" />
     <BundleResource Include="Resources\Default.png" />
     <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\Menu-50.png" />
+    <BundleResource Include="Resources\Menu-20.png" />
   </ItemGroup>
   <ItemGroup>
+    <XamarinComponentReference Include="flyoutnavigation">
+      <Visible>False</Visible>
+      <Version>1.5.1</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="googleiosmaps">
       <Visible>False</Visible>
       <Version>1.13.1.0</Version>

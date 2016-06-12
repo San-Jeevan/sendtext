@@ -1,109 +1,61 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Globalization;
+using System.Linq;
 using CoreLocation;
 using Foundation;
 using UIKit;
+using FlyoutNavigation;
+using MonoTouch.Dialog;
 
 namespace iOS
 {
     public partial class SecondViewController : UIViewController
     {
-        private CLLocationManager locMgr2 = null;
-        public SecondViewController(IntPtr handle) : base(handle)
+            FlyoutNavigationController navigation;
+
+
+        static T CreateViewController<T>(string storyboardName, string viewControllerStoryBoardId = "") where T : UIViewController
         {
+            var storyboard = UIStoryboard.FromName(storyboardName, null);
+            return string.IsNullOrEmpty(viewControllerStoryBoardId) ? (T)storyboard.InstantiateInitialViewController() : (T)storyboard.InstantiateViewController(viewControllerStoryBoardId);
         }
 
         public override void ViewDidLoad()
         {
-  
             base.ViewDidLoad();
-            // Perform any additional setup after loading the view, typically from a nib.
-            var locMgr = new CLLocationManager();
-            locMgr.PausesLocationUpdatesAutomatically = false;
-
-            // handle the updated location method and update the UI
-            if (UIDevice.CurrentDevice.CheckSystemVersion(6, 0))
+            var storyboardVc = CreateViewController<FirstViewController>("Main", "FirstViewController");
+            var navigation = new FlyoutNavigationController
             {
-                locMgr.LocationsUpdated += (object sender, CLLocationsUpdatedEventArgs e) =>
-                {
-                    var l = e.Locations[e.Locations.Length - 1];
-                    this.LblLatitude.Text = l.Coordinate.Latitude.ToString(CultureInfo.InvariantCulture);
-                    this.LblLongitude.Text = l.Coordinate.Longitude.ToString(CultureInfo.InvariantCulture);
+                // Create the navigation menu
+                NavigationRoot = new RootElement("Navigation") {
+                new Section ("Pages") {
+                new StringElement ("Session"),
+                new StringElement ("Vegetables"),
+                new StringElement ("Minerals")
+                          }
+             }
+            };
 
-                };
-            }
-            else
+
+            storyboardVc.setNavigation(navigation);
+            var viewcontrollers = new[]
             {
-#pragma warning disable 618
-                // this won't be called on iOS 6 (deprecated)
-                locMgr.UpdatedLocation += (object sender, CLLocationUpdatedEventArgs e) =>
-                {
-                    var l = e.NewLocation;
-                    this.LblLatitude.Text = l.Coordinate.Latitude.ToString(CultureInfo.InvariantCulture);
-                    this.LblLongitude.Text = l.Coordinate.Longitude.ToString(CultureInfo.InvariantCulture);
-
-                };
-#pragma warning restore 618
-            }
-
-            //iOS 8 requires you to manually request authorization now - Note the Info.plist file has a new key called requestWhenInUseAuthorization added to.
-            if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
-            {
-                locMgr.RequestWhenInUseAuthorization();
-            }
-
-
-            // start updating our location, et. al.
-            if (CLLocationManager.LocationServicesEnabled)
-                locMgr.StartUpdatingLocation();
-
-            //if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
-            //{
-            //    locMgr.RequestAlwaysAuthorization();
-            //}
-
-
-
-            //if (UIDevice.CurrentDevice.CheckSystemVersion(9, 0))
-            //{
-            //    locMgr.AllowsBackgroundLocationUpdates = true;
-            //}
-
-            //locMgr.Failed += delegate (object sender, NSErrorEventArgs args)
-            //{
-            //    this.LblLatitude.Text = "FAILED";
-            //};
-
-            //locMgr.LocationUpdatesPaused += delegate (object sender, EventArgs args)
-            //{
-            //    this.LblLatitude.Text = "PAUSED";
-            //};
-
-            //if (CLLocationManager.LocationServicesEnabled)
-            //{
-            //    locMgr.DesiredAccuracy = CLLocation.AccuracyBest;
-            //    locMgr.DistanceFilter = 1;
-
-            //    locMgr.LocationsUpdated += delegate (object sender, CLLocationsUpdatedEventArgs e)
-            //    {
-            //        var l = e.Locations[e.Locations.Length - 1];
-            //        this.LblLatitude.Text = l.Coordinate.Latitude.ToString(CultureInfo.InvariantCulture);
-            //        this.LblLongitude.Text = l.Coordinate.Longitude.ToString(CultureInfo.InvariantCulture);
-
-            //    };
-
-
-            //}
-            //locMgr.StartUpdatingLocation();
+                new UINavigationController(storyboardVc),
+                new UIViewController {View = new UILabel {Text = "Vegetables (drag right)"}}, //-skal peke til home hvor nav bar er skjult
+                new UIViewController {View = new UILabel {Text = "Minerals (drag right)"}}
+            };
+            navigation.ViewControllers = viewcontrollers;
+            
+            // Specify navigation position
+            navigation.HideMenu();
+            navigation.Position = FlyOutNavigationPosition.Left;
+            View.AddSubview(navigation.View);
         }
-
-        public override void DidReceiveMemoryWarning()
-        {
-            base.DidReceiveMemoryWarning();
-            // Release any cached data, images, etc that aren't in use.
-        }
-
-     
+    
     }
+
 }
+    
+
 

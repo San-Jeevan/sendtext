@@ -16,20 +16,19 @@ using UIKit;
 
 namespace iOS
 {
-
-
-
     public static class GpsService
     {
         static HubConnection hubConnection;
         static IHubProxy hubProxy;
         private static string lastPosition = "";
-        static CLLocationManager locMgr =null;
+        static CLLocationManager locMgr = null;
+        static bool GpsRunning;
 
 
 
-        public static void startGps()
+        public static void StartGps()
         {
+            if (GpsRunning) return;
             locMgr = new CLLocationManager();
             locMgr.PausesLocationUpdatesAutomatically = false;
             if (UIDevice.CurrentDevice.CheckSystemVersion(6, 0))
@@ -66,12 +65,17 @@ namespace iOS
             }
 
             if (CLLocationManager.LocationServicesEnabled)
-            locMgr.StartUpdatingLocation();
-
+            {
+                locMgr.StartUpdatingLocation();
+                GpsRunning=true;
+            }
+           
         }
 
         public static void Destroy()
         {
+            GpsRunning = false;
+            if (locMgr == null) return; 
             var myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
             myDelegate.InvokeOnMainThread(() =>
             {
@@ -119,7 +123,7 @@ namespace iOS
             {
                 hubProxy.Invoke("JoinSession", "testroom");
                 var myDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
-                myDelegate.InvokeOnMainThread(startGps);
+                myDelegate.InvokeOnMainThread(StartGps);
 
             }
             if (stateChange.NewState == ConnectionState.Disconnected) return;

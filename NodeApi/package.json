@@ -3,7 +3,8 @@
   "description": "gpsfix.io",
   "version": "0.0.2",
   "private": true,
-    "dependencies": {
+  "dependencies": {
+    "apn": "^1.7.6",
     "async": "^2.0.0-rc.5",
     "bcryptjs": "^2.3.0",
     "body-parser": "~1.0.2",

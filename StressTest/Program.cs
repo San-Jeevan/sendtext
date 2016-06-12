@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,7 +9,7 @@ namespace StressTest
 
     class Program
     {
-        private static Random random = new Random((int)DateTime.Now.Ticks);//thanks to McAden
+        private static Random random = new Random((int)DateTime.Now.Ticks);
         private static string RandomString(int size)
         {
             StringBuilder builder = new StringBuilder();
@@ -27,18 +25,14 @@ namespace StressTest
 
         static void Main(string[] args)
         {
-
-
             var success = 0;
             var error = 0;
 
             var settings_delay = 10000;
             var settings_requests = 40;
-
             
             for (int i = 0; i < 100; i++)
             {
-
                 for (int j = 0; j < settings_requests; j++)
                 {
                     Task.Factory.StartNew(() =>
@@ -75,7 +69,6 @@ namespace StressTest
 
             }
             Console.ReadLine();
-
         }
 
 
