@@ -31,17 +31,23 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="configProd.js" />
     <Compile Include="config.js" />
-    <Compile Include="configLocal.js" />
     <Compile Include="config\auth.js" />
     <Compile Include="config\redisHelper.js" />
     <Compile Include="config\tokenHelper.js" />
     <Compile Include="db\dbcore.js" />
+    <Compile Include="db\queryStrings.js" />
+    <Compile Include="domain\responses.js" />
+    <Content Include="2_www.gpsfix.io.crt" />
+    <Content Include="2_www.gpsfix.io.key" />
+    <Content Include="APNcert.p12" />
     <Content Include="package.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="config\" />
     <Folder Include="db\" />
+    <Folder Include="domain\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

@@ -20,12 +20,12 @@ var options = {
 };
 
 
-https.createServer(options, app).listen(443, function () {
-    console.log('Started!');
-});
+//https.createServer(options, app).listen(443, function () {
+//    console.log('Started!');
+//});
 
 app.set('trust proxy', '162.158.222.62')
-app.listen(80);
+app.listen(1234);
 
 app.use(bodyParser());
 app.use(morgan());
@@ -33,7 +33,6 @@ app.use(morgan());
 
 
 // APN
-
 var apnoptions = {
     pfx: 'APNcert.p12',
     passphrase: 'heyhey',
@@ -55,6 +54,9 @@ apnConnection.addListener('socketError', console.error);
 
 
 
+
+
+// API ENDPOINTS
 app.all('*', function (req, res, next) {
     res.set('Access-Control-Allow-Origin', '*');
     res.set('Access-Control-Allow-Credentials', true);
@@ -92,6 +94,27 @@ app.get('/about', function (req, res) {
     return res.json('hey');
 });
 
+
+app.post('/api/isitregistered', function (req, res) {
+    var parameters = req.body;
+    if (parameters.length == 0) return res.json("");
+    
+    
+    db.isregistered(parameters, function (response) {
+        return res.json(response);
+    });
+});
+
+
+app.post('/api/createanonuser', function (req, res) {
+    var parameters = req.body;
+    if (parameters.length == 0) return res.json("");
+    
+    
+    db.createanonuser(parameters, function (response) {
+        return res.json(response);
+    });
+});
 
 
 app.post('/api/getcontacts', function (req, res) {
