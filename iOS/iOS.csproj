@@ -100,23 +100,34 @@
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <Compile Include="REST\RESTService.cs" />
-    <Compile Include="SwipableTableView.cs" />
+    <Compile Include="Splashscreen.cs" />
+    <Compile Include="Splashscreen.designer.cs">
+      <DependentUpon>Splashscreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewController1.cs" />
+    <Compile Include="ViewController1.designer.cs">
+      <DependentUpon>ViewController1.cs</DependentUpon>
+    </Compile>
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
+    <InterfaceDefinition Include="Login.storyboard">
+      <SubType>Designer</SubType>
+    </InterfaceDefinition>
     <None Include="packages.config" />
+    <InterfaceDefinition Include="Splashscreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FirstViewController.cs" />
-    <Compile Include="FirstViewController.designer.cs">
-      <DependentUpon>FirstViewController.cs</DependentUpon>
+    <Compile Include="MapViewController.cs" />
+    <Compile Include="MapViewController.designer.cs">
+      <DependentUpon>MapViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="SecondViewController.cs" />
-    <Compile Include="SecondViewController.designer.cs">
-      <DependentUpon>SecondViewController.cs</DependentUpon>
+    <Compile Include="NavigationCreateController.cs" />
+    <Compile Include="NavigationCreateController.designer.cs">
+      <DependentUpon>NavigationCreateController.cs</DependentUpon>
     </Compile>
     <InterfaceDefinition Include="Main.storyboard">
       <SubType>Designer</SubType>
@@ -178,6 +189,11 @@
     <BundleResource Include="Resources\Default%402x.png" />
     <BundleResource Include="Resources\Menu-50.png" />
     <BundleResource Include="Resources\Menu-20.png" />
+    <BundleResource Include="Resources\Default-667h%402x.png" />
+    <BundleResource Include="Resources\Icon-App%403x.png" />
+    <BundleResource Include="Resources\Splashscreen.png" />
+    <BundleResource Include="Resources\LoginBg.jpg" />
+    <BundleResource Include="Resources\Plus-20.png" />
   </ItemGroup>
   <ItemGroup>
     <XamarinComponentReference Include="flyoutnavigation">
@@ -198,6 +214,9 @@
       <Project>{3a19eb86-d25c-434e-8a32-38156ec02eca}</Project>
       <Name>Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

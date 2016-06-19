@@ -7,7 +7,7 @@
         <!--First-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController id="9pv-A4-QxB" storyboardIdentifier="FirstViewController" customClass="FirstViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="9pv-A4-QxB" storyboardIdentifier="NavigationCreateController" customClass="NavigationCreateController" customModuleProvider="" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ia1-K6-d13"/>
                         <viewControllerLayoutGuide type="bottom" id="4ug-Mw-9AY"/>
@@ -50,7 +50,7 @@
         <!--Second-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
-                <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModuleProvider="" sceneMemberID="viewController">
+                <viewController id="8rJ-Kc-sve" customModuleProvider="" sceneMemberID="viewController" storyboardIdentifier="MapViewController" customClass="MapViewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="L7p-HK-0SC"/>
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
@@ -121,5 +121,12 @@
         <image name="Icon-Small.png" width="29" height="29"/>
         <image name="Icon.png" width="57" height="57"/>
         <image name="Menu-50.png" width="50" height="50"/>
+        <image name="Default-667h.png" width="375" height="667"/>
+        <image name="Menu-20.png" width="20" height="20"/>
+        <image name="Icon-App.png" width="60" height="60"/>
+        <image name="Splashscreen.png" width="256" height="256"/>
+        <image name="LoginBg.jpg" width="1280" height="856"/>
+        <image name="Plus-20.png" width="20" height="20"/>
+        <image name="Plus-50.png" width="50" height="50"/>
     </resources>
 </document>

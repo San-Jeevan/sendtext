@@ -11,8 +11,8 @@ using UIKit;
 
 namespace iOS
 {
-	[Register ("FirstViewController")]
-	partial class FirstViewController
+	[Register ("NavigationCreateController")]
+	partial class NavigationCreateController
 	{
 		void ReleaseDesignerOutlets ()
 		{

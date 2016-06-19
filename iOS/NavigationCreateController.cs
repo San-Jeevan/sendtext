@@ -10,12 +10,11 @@ using MonoTouch.Dialog;
 
 namespace iOS
 {
-    public partial class SecondViewController : UIViewController
+    public partial class NavigationCreateController : UIViewController
     {
-            FlyoutNavigationController navigation;
+        FlyoutNavigationController navigation;
 
-
-        static T CreateViewController<T>(string storyboardName, string viewControllerStoryBoardId = "") where T : UIViewController
+        public static T CreateViewController<T>(string storyboardName, string viewControllerStoryBoardId = "") where T : UIViewController
         {
             var storyboard = UIStoryboard.FromName(storyboardName, null);
             return string.IsNullOrEmpty(viewControllerStoryBoardId) ? (T)storyboard.InstantiateInitialViewController() : (T)storyboard.InstantiateViewController(viewControllerStoryBoardId);
@@ -24,21 +23,20 @@ namespace iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            var storyboardVc = CreateViewController<FirstViewController>("Main", "FirstViewController");
+            var storyboardVc = CreateViewController<MapViewController>("Main", "MapViewController");
             var navigation = new FlyoutNavigationController
             {
-                // Create the navigation menu
                 NavigationRoot = new RootElement("Navigation") {
-                new Section ("Pages") {
+                new Section ("") {
+                new StringElement ("Home"),
                 new StringElement ("Session"),
-                new StringElement ("Vegetables"),
-                new StringElement ("Minerals")
-                          }
+                new StringElement ("Settings")
+             }
              }
             };
+             
 
-
-            storyboardVc.setNavigation(navigation);
+            storyboardVc.SetNavigation(navigation);
             var viewcontrollers = new[]
             {
                 new UINavigationController(storyboardVc),
@@ -46,16 +44,17 @@ namespace iOS
                 new UIViewController {View = new UILabel {Text = "Minerals (drag right)"}}
             };
             navigation.ViewControllers = viewcontrollers;
-            
+
             // Specify navigation position
             navigation.HideMenu();
+           
             navigation.Position = FlyOutNavigationPosition.Left;
             View.AddSubview(navigation.View);
         }
-    
+
     }
 
 }
-    
+
 
 

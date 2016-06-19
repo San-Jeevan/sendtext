@@ -26,29 +26,27 @@ namespace iOS
             set;
         }
 
+
+
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
 
+            //CHECK IF USER CLICKED ON A NOTIFCATION.
             if (launchOptions != null)
             {
-
-                // check for a local notification
                 if (launchOptions.ContainsKey(UIApplication.LaunchOptionsLocalNotificationKey))
                 {
                     Console.WriteLine("local");
                     UILocalNotification localNotification = launchOptions[UIApplication.LaunchOptionsLocalNotificationKey] as UILocalNotification;
                     if (localNotification != null)
                     {
-
                         new UIAlertView(localNotification.AlertAction, localNotification.AlertBody, null, "OK", null).Show();
-                      
                     }
                 }
 
              
                 if (launchOptions.ContainsKey(UIApplication.LaunchOptionsRemoteNotificationKey))
                 {
-                    Console.WriteLine("remote");
                     NSDictionary remoteNotification = launchOptions[UIApplication.LaunchOptionsRemoteNotificationKey] as NSDictionary;
                     if (remoteNotification != null)
                     {
@@ -57,21 +55,25 @@ namespace iOS
                 }
             }
 
-
+            //APN
             apnService = new APNService();
             apnService.GetApnToken();
 
-            // Override point for customization after application launch.
-            // If not required for your application you can safely delete this method
-            //UINavigationBar.Appearance.BarTintColor = UIColor.Blue;
-            //UINavigationBar.Appearance.TintColor = UIColor.White;
-            //UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes() {TextColor = UIColor.White}); 
+
+            //NAVIGATION WHITE
+            UINavigationBar.Appearance.TintColor = UIColor.White;
+            UINavigationBar.Appearance.BarTintColor = UIColor.Purple;
+            UINavigationBar.Appearance.SetTitleTextAttributes(new UITextAttributes() { TextColor = UIColor.White });
             MapServices.ProvideAPIKey(mapskey);
+
+
+            //LOAD NavigationCreateController AS FIRSTVIEW
             Window = new UIWindow(UIScreen.MainScreen.Bounds)
             {
-                RootViewController = new SecondViewController()
+                RootViewController = new NavigationCreateController()
             };
             Window.MakeKeyAndVisible();
+
             return true;
         }
 

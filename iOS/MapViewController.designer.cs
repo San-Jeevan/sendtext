@@ -11,13 +11,11 @@ using UIKit;
 
 namespace iOS
 {
-	[Register ("SecondViewController")]
-	partial class SecondViewController
+	[Register ("MapViewController")]
+	partial class MapViewController
 	{
 		void ReleaseDesignerOutlets ()
 		{
 		}
-
-
 	}
 }
