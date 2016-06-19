@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="167">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+    </dependencies>
+    <scenes>
+        <scene sceneID="166">
+            <objects>
+                <viewController id="167" sceneMemberID="viewController" customClass="AddParticipantController" storyboardIdentifier="AddParticipantController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="164"/>
+                        <viewControllerLayoutGuide type="bottom" id="165"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="168">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" id="254" translatesAutoresizingMaskIntoConstraints="NO" opaque="NO">
+                                <rect key="frame" x="28" y="-15" width="320" height="44"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="0.0" y="16" width="320" height="44"/>
+                                    <mask key="subviews">
+                                        <include reference="258"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="338"/>
+                                    </mask>
+                                </variation>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.50196078431372548" green="0" blue="0.50196078431372548" alpha="1"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                </textAttributes>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="258"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="338"/>
+                                    </mask>
+                                </variation>
+                                <color key="barTintColor" colorSpace="calibratedRGB" red="0.50196078431372548" green="0" blue="0.50196078431372548" alpha="1"/>
+                                <constraints>
+                                    <constraint id="338" firstItem="254" firstAttribute="height" constant="44"/>
+                                </constraints>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="310" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="73" y="74" width="198" height="211"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="311" rowHeight="44">
+                                        <rect key="frame" x="0.0" y="22" width="198" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="312" tableViewCell="311">
+                                            <rect key="frame" x="0.0" y="0.0" width="198" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="313" rowHeight="44">
+                                        <rect key="frame" x="0.0" y="66" width="198" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="314" tableViewCell="313">
+                                            <rect key="frame" x="0.0" y="0.0" width="198" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="315" rowHeight="44">
+                                        <rect key="frame" x="0.0" y="110" width="198" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="316" tableViewCell="315">
+                                            <rect key="frame" x="0.0" y="0.0" width="198" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </tableViewCell>
+                                </prototypes>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="0.0" y="58" width="320" height="422"/>
+                                </variation>
+                            </tableView>
+                        </subviews>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="254"/>
+                                <exclude reference="310"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="263"/>
+                                <exclude reference="264"/>
+                                <exclude reference="339"/>
+                                <exclude reference="345"/>
+                                <exclude reference="380"/>
+                                <exclude reference="381"/>
+                                <exclude reference="382"/>
+                                <exclude reference="383"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="254"/>
+                                <include reference="310"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="263"/>
+                                <include reference="264"/>
+                                <include reference="339"/>
+                                <include reference="345"/>
+                                <include reference="380"/>
+                                <include reference="381"/>
+                                <include reference="382"/>
+                                <include reference="383"/>
+                            </mask>
+                        </variation>
+                        <constraints>
+                            <constraint id="263" firstItem="254" firstAttribute="trailing" secondItem="168" secondAttribute="trailing"/>
+                            <constraint id="264" firstItem="254" firstAttribute="leading" secondItem="168" secondAttribute="leading"/>
+                            <constraint id="339" firstItem="254" firstAttribute="trailing" secondItem="168" secondAttribute="trailing"/>
+                            <constraint id="345" firstItem="164" firstAttribute="bottom" secondItem="254" secondAttribute="top" constant="4"/>
+                            <constraint id="380" firstItem="310" firstAttribute="trailing" secondItem="168" secondAttribute="trailing"/>
+                            <constraint id="381" firstItem="310" firstAttribute="leading" secondItem="168" secondAttribute="leading"/>
+                            <constraint id="382" firstItem="254" firstAttribute="bottom" secondItem="310" secondAttribute="top" constant="2"/>
+                            <constraint id="383" firstItem="310" firstAttribute="bottom" secondItem="168" secondAttribute="bottom"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="Myop" destination="168" id="name-outlet-168"/>
+                        <outlet property="Toolbar" destination="254" id="name-outlet-254"/>
+                        <outlet property="ContactsList" destination="310" id="name-outlet-310"/>
+                        <outlet property="searchDisplayController" destination="320" id="319"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="169" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="320">
+                    <connections>
+                        <outlet property="delegate" destination="167" id="321"/>
+                        <outlet property="searchBar" destination="317" id="322"/>
+                        <outlet property="searchContentsController" destination="167" id="323"/>
+                        <outlet property="searchResultsDataSource" destination="167" id="324"/>
+                        <outlet property="searchResultsDelegate" destination="167" id="325"/>
+                    </connections>
+                </searchDisplayController>
+            </objects>
+            <point key="canvasLocation" x="270" y="20"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Default-568h.png" width="320" height="568"/>
+        <image name="Default-667h.png" width="375" height="667"/>
+        <image name="Default.png" width="320" height="480"/>
+        <image name="favico260.png" width="260" height="260"/>
+        <image name="Icon-60.png" width="60" height="60"/>
+        <image name="Icon-App.png" width="60" height="60"/>
+        <image name="Icon-Small-40.png" width="40" height="40"/>
+        <image name="Icon-Small.png" width="29" height="29"/>
+        <image name="Icon.png" width="57" height="57"/>
+        <image name="Menu-20.png" width="20" height="20"/>
+        <image name="Menu-50.png" width="50" height="50"/>
+        <image name="Splashscreen.png" width="256" height="256"/>
+        <image name="norway-714216_1280.jpg" width="1280" height="856"/>
+        <image name="LoginBg.jpg" width="1280" height="856"/>
+        <image name="Plus-20.png" width="20" height="20"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedScreenMetrics key="destination"/>
+        <simulatedOrientationMetrics key="orientation"/>
+    </simulatedMetricsContainer>
+</document>

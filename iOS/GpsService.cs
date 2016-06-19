@@ -1,15 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading.Tasks;
 using Common.Models;
-using CoreBluetooth;
 using CoreLocation;
-using Foundation;
 using Microsoft.AspNet.SignalR.Client;
 using Newtonsoft.Json;
 using UIKit;
@@ -89,7 +81,6 @@ namespace iOS
                     hubConnection.Dispose();
               }).Start();
         }
-
 
         public static void Start()
         {

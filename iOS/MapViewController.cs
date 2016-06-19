@@ -58,13 +58,11 @@ namespace iOS
                 navigation.ToggleMenu();
             });
 
-            
-
             var rightbtn = new UIBarButtonItem(UIBarButtonSystemItem.Add, delegate
             {
                Console.WriteLine("clicked");
 
-                var newVC = CreateViewController<ViewController1>("Login", "ViewController1");
+                var newVC = CreateViewController<AddParticipantController>("AddParticipant", "AddParticipantController");
 
                 newVC.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
                 newVC.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;

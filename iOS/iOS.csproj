@@ -95,6 +95,10 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AccountMainViewController.cs" />
+    <Compile Include="AccountMainViewController.designer.cs">
+      <DependentUpon>AccountMainViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="APN\APNService.cs" />
     <Compile Include="GpsService.cs" />
     <Compile Include="Main.cs" />
@@ -104,20 +108,26 @@
     <Compile Include="Splashscreen.designer.cs">
       <DependentUpon>Splashscreen.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewController1.cs" />
-    <Compile Include="ViewController1.designer.cs">
-      <DependentUpon>ViewController1.cs</DependentUpon>
+    <Compile Include="AddParticipantController.cs" />
+    <Compile Include="AddParticipantController.designer.cs">
+      <DependentUpon>AddParticipantController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Table\AddParticpantTableSource.cs" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
+    <InterfaceDefinition Include="AddParticipant.storyboard">
+      <SubType>Designer</SubType>
+    </InterfaceDefinition>
     <InterfaceDefinition Include="Login.storyboard">
       <SubType>Designer</SubType>
     </InterfaceDefinition>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <InterfaceDefinition Include="Splashscreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +173,10 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\Components\signalr-2.1.2.2\lib\ios-unified\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.105.2.3\lib\Xamarin.iOS10\RestSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Extensions">
@@ -174,6 +188,9 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Xamarin.Mobile">
+      <HintPath>..\Components\xamarin.mobile-0.7.7\lib\ios-unified\Xamarin.Mobile.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />
@@ -204,9 +221,17 @@
       <Visible>False</Visible>
       <Version>1.13.1.0</Version>
     </XamarinComponentReference>
+    <XamarinComponentReference Include="restsharp">
+      <Visible>False</Visible>
+      <Version>105.2.3</Version>
+    </XamarinComponentReference>
     <XamarinComponentReference Include="signalr">
       <Visible>False</Visible>
       <Version>2.1.2.2</Version>
+    </XamarinComponentReference>
+    <XamarinComponentReference Include="xamarin.mobile">
+      <Visible>False</Visible>
+      <Version>0.7.7</Version>
     </XamarinComponentReference>
   </ItemGroup>
   <ItemGroup>

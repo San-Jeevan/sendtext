@@ -124,12 +124,13 @@ namespace iOS
             }
 
             var oldDeviceToken = NSUserDefaults.StandardUserDefaults.StringForKey("PushDeviceToken");
-
+           
             if (string.IsNullOrEmpty(oldDeviceToken) || !oldDeviceToken.Equals(DeviceToken))
             {
+               //update
             }
 
-            // Save new device token 
+            
             NSUserDefaults.StandardUserDefaults.SetString(DeviceToken, "PushDeviceToken");
         }
 
