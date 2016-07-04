@@ -78,7 +78,7 @@ namespace iOS
             searchBar.SearchButtonClicked += (sender, e) => {
             Search();
             };
-            //ContactsList.TableHeaderView = searchBar;
+            ContactsList.TableHeaderView = searchBar;
 
         }
 
@@ -90,15 +90,16 @@ namespace iOS
         void Search()
         {
             var temptable = indexedTableItems.Where(x => x.IndexOf(searchBar.Text, StringComparison.CurrentCultureIgnoreCase) != -1).ToList();
+            indexedTableItems.Clear();
             indexedTableItems.AddRange(temptable);
-            for (int i = indexedTableItems.Count; i-- > 0;)
-            {
-                if (indexedTableItems.Count == temptable.Count)
-                {
-                    break;
-                }
-                indexedTableItems.RemoveAt(i);
-            }
+            //for (int i = indexedTableItems.Count; i-- > 0;)
+            //{
+            //    if (indexedTableItems.Count == temptable.Count)
+            //    {
+            //        break;
+            //    }
+            //    indexedTableItems.RemoveAt(i);
+            //}
           
             if (tableSource != null)
             {

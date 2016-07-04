@@ -23,6 +23,13 @@ namespace iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            var userloggedin = true;
+            if (!userloggedin)
+            {
+                var tem = CreateViewController<AccountMainViewController>("Login", "AccountMainViewController");
+                View.AddSubview(tem.View);
+                return;
+            }
             var storyboardVc = CreateViewController<MapViewController>("Main", "MapViewController");
             var navigation = new FlyoutNavigationController
             {

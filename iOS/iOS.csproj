@@ -95,9 +95,17 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="AccountLoginViewController.cs" />
+    <Compile Include="AccountLoginViewController.designer.cs">
+      <DependentUpon>AccountLoginViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="AccountMainViewController.cs" />
     <Compile Include="AccountMainViewController.designer.cs">
       <DependentUpon>AccountMainViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AccountRegisterViewController.cs" />
+    <Compile Include="AccountRegisterViewController.designer.cs">
+      <DependentUpon>AccountRegisterViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="APN\APNService.cs" />
     <Compile Include="GpsService.cs" />
@@ -113,6 +121,8 @@
       <DependentUpon>AddParticipantController.cs</DependentUpon>
     </Compile>
     <Compile Include="Table\AddParticpantTableSource.cs" />
+    <InterfaceDefinition Include="AccountRegisterViewController.xib" />
+    <InterfaceDefinition Include="AccountLoginViewController.xib" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,6 +139,7 @@
       <SubType>Designer</SubType>
     </None>
     <InterfaceDefinition Include="Splashscreen.storyboard" />
+    <InterfaceDefinition Include="SandboxStory.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MapViewController.cs" />

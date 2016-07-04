@@ -30,9 +30,9 @@ namespace iOS
 		[GeneratedCode ("iOS Designer", "1.0")]
 		partial void Btnlogin_TouchUpInside (UIButton sender);
 
-		[Action ("UIButton11_TouchUpInside:")]
+		[Action ("BtnRegister_TouchUpInside:")]
 		[GeneratedCode ("iOS Designer", "1.0")]
-		partial void UIButton11_TouchUpInside (UIButton sender);
+		partial void BtnRegister_TouchUpInside (UIButton sender);
 
 		void ReleaseDesignerOutlets ()
 		{

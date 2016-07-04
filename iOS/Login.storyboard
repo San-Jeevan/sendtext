@@ -25,7 +25,7 @@
                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 </state>
                                 <connections>
-                                    <action selector="UIButton11_TouchUpInside:" destination="5" id="13" eventType="touchUpInside"/>
+                                    <action selector="BtnRegister_TouchUpInside:" destination="5" id="64" eventType="touchUpInside"/>
                                 </connections>
                                 <constraints>
                                     <constraint id="27" firstItem="11" firstAttribute="height" constant="87"/>
@@ -40,8 +40,7 @@
                                     <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
                                 </state>
                                 <connections>
-                                    <action selector="UIButton11_TouchUpInside:" destination="19" id="18" eventType="touchUpInside"/>
-                                    <action selector="Btnlogin_TouchUpInside:" destination="5" id="33" eventType="touchUpInside"/>
+                                    <action selector="Btnlogin_TouchUpInside:" destination="5" id="155" eventType="touchUpInside"/>
                                 </connections>
                                 <constraints>
                                     <constraint id="26" firstItem="17" firstAttribute="height" constant="87"/>
@@ -81,6 +80,336 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-202" y="17"/>
+        </scene>
+        <scene sceneID="48">
+            <objects>
+                <viewController id="49" sceneMemberID="viewController" customClass="AccountRegisterViewController" storyboardIdentifier="AccountRegisterViewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="46"/>
+                        <viewControllerLayoutGuide type="bottom" id="47"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="50">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="70" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Type..." textAlignment="center">
+                                <rect key="frame" x="112" y="197" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="48" y="329" width="319" height="70"/>
+                                    <mask key="constraints">
+                                        <include reference="92"/>
+                                    </mask>
+                                </variation>
+                                <constraints>
+                                    <constraint id="92" firstItem="70" firstAttribute="height" constant="70"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="92"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" id="71" translatesAutoresizingMaskIntoConstraints="NO" text="Phonenumber" textAlignment="center">
+                                <rect key="frame" x="139" y="108" width="42" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="76" y="229" width="263" height="36"/>
+                                    <mask key="constraints">
+                                        <include reference="88"/>
+                                    </mask>
+                                </variation>
+                                <constraints>
+                                    <constraint id="88" firstItem="71" firstAttribute="height" constant="36"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="88"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="93" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="406" width="600" height="87"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.50196078431372548" green="0" blue="0.50196078431372548" alpha="1"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                </state>
+                                <connections/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="0.0" y="649" width="414" height="87"/>
+                                    <mask key="constraints">
+                                        <include reference="101"/>
+                                    </mask>
+                                </variation>
+                                <constraints>
+                                    <constraint id="101" firstItem="93" firstAttribute="height" constant="87"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="101"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                        </subviews>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="70"/>
+                                <exclude reference="71"/>
+                                <exclude reference="93"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="74"/>
+                                <exclude reference="75"/>
+                                <exclude reference="84"/>
+                                <exclude reference="86"/>
+                                <exclude reference="87"/>
+                                <exclude reference="91"/>
+                                <exclude reference="98"/>
+                                <exclude reference="99"/>
+                                <exclude reference="100"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="70"/>
+                                <include reference="71"/>
+                                <include reference="93"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="74"/>
+                                <include reference="75"/>
+                                <include reference="84"/>
+                                <include reference="86"/>
+                                <include reference="87"/>
+                                <include reference="91"/>
+                                <include reference="98"/>
+                                <include reference="99"/>
+                                <include reference="100"/>
+                            </mask>
+                        </variation>
+                        <constraints>
+                            <constraint id="74" firstItem="50" firstAttribute="trailing" secondItem="70" secondAttribute="trailing" constant="47"/>
+                            <constraint id="75" firstItem="70" firstAttribute="leading" secondItem="50" secondAttribute="leading" constant="48"/>
+                            <constraint id="84" firstItem="50" firstAttribute="centerY" secondItem="71" secondAttribute="centerY" constant="121"/>
+                            <constraint id="86" firstItem="50" firstAttribute="trailing" secondItem="71" secondAttribute="trailing" constant="75"/>
+                            <constraint id="87" firstItem="71" firstAttribute="leading" secondItem="50" secondAttribute="leading" constant="76"/>
+                            <constraint id="91" firstItem="50" firstAttribute="centerY" secondItem="70" secondAttribute="centerY" constant="4"/>
+                            <constraint id="98" firstItem="93" firstAttribute="leading" secondItem="50" secondAttribute="leading"/>
+                            <constraint id="99" firstItem="93" firstAttribute="trailing" secondItem="50" secondAttribute="trailing"/>
+                            <constraint id="100" firstItem="93" firstAttribute="bottom" secondItem="50" secondAttribute="bottom"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="AccountRegister" destination="50" id="name-outlet-50"/>
+                        <outlet property="BtnPhoneNext" destination="93" id="name-outlet-93"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="51" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="359" y="19"/>
+        </scene>
+        <scene sceneID="102">
+            <objects>
+                <viewController id="103" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="122"/>
+                        <viewControllerLayoutGuide type="bottom" id="123"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="105">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="108" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Type..." textAlignment="center">
+                                <rect key="frame" x="112" y="197" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="75" y="206" width="264" height="40"/>
+                                    <mask key="constraints">
+                                        <include reference="141"/>
+                                    </mask>
+                                </variation>
+                                <constraints>
+                                    <constraint id="141" firstItem="108" firstAttribute="height" constant="40"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="141"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" id="109" translatesAutoresizingMaskIntoConstraints="NO" text="Username" textAlignment="center">
+                                <rect key="frame" x="139" y="108" width="42" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="75" y="176" width="264" height="40"/>
+                                    <mask key="constraints">
+                                        <include reference="137"/>
+                                    </mask>
+                                </variation>
+                                <constraints>
+                                    <constraint id="137" firstItem="109" firstAttribute="height" constant="40"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="137"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="107" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="406" width="600" height="87"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="backgroundColor" colorSpace="calibratedRGB" red="0.50196078431372548" green="0" blue="0.50196078431372548" alpha="1"/>
+                                <state key="normal" title="Register">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleColor" colorSpace="calibratedWhite" white="1" alpha="1"/>
+                                </state>
+                                <connections/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="0.0" y="649" width="414" height="87"/>
+                                    <mask key="constraints">
+                                        <include reference="121"/>
+                                    </mask>
+                                </variation>
+                                <constraints>
+                                    <constraint id="121" firstItem="107" firstAttribute="height" constant="87"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="121"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" id="130" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Type..." textAlignment="center">
+                                <rect key="frame" x="112" y="197" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="75" y="373" width="264" height="40"/>
+                                    <mask key="constraints">
+                                        <include reference="149"/>
+                                    </mask>
+                                </variation>
+                                <constraints>
+                                    <constraint id="149" firstItem="130" firstAttribute="height" constant="40"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="149"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" minimumFontSize="10" id="132" translatesAutoresizingMaskIntoConstraints="NO" text="Password" textAlignment="center">
+                                <rect key="frame" x="139" y="108" width="42" height="21"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <rect key="frame" x="75" y="343" width="264" height="40"/>
+                                    <mask key="constraints">
+                                        <include reference="145"/>
+                                    </mask>
+                                </variation>
+                                <constraints>
+                                    <constraint id="145" firstItem="132" firstAttribute="height" constant="40"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="145"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="108"/>
+                                <exclude reference="109"/>
+                                <exclude reference="107"/>
+                                <exclude reference="130"/>
+                                <exclude reference="132"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="116"/>
+                                <exclude reference="117"/>
+                                <exclude reference="118"/>
+                                <exclude reference="134"/>
+                                <exclude reference="135"/>
+                                <exclude reference="136"/>
+                                <exclude reference="138"/>
+                                <exclude reference="139"/>
+                                <exclude reference="140"/>
+                                <exclude reference="142"/>
+                                <exclude reference="143"/>
+                                <exclude reference="144"/>
+                                <exclude reference="146"/>
+                                <exclude reference="147"/>
+                                <exclude reference="148"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="108"/>
+                                <include reference="109"/>
+                                <include reference="107"/>
+                                <include reference="130"/>
+                                <include reference="132"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="116"/>
+                                <include reference="117"/>
+                                <include reference="118"/>
+                                <include reference="134"/>
+                                <include reference="135"/>
+                                <include reference="136"/>
+                                <include reference="138"/>
+                                <include reference="139"/>
+                                <include reference="140"/>
+                                <include reference="142"/>
+                                <include reference="143"/>
+                                <include reference="144"/>
+                                <include reference="146"/>
+                                <include reference="147"/>
+                                <include reference="148"/>
+                            </mask>
+                        </variation>
+                        <constraints>
+                            <constraint id="116" firstItem="107" firstAttribute="leading" secondItem="105" secondAttribute="leading"/>
+                            <constraint id="117" firstItem="107" firstAttribute="trailing" secondItem="105" secondAttribute="trailing"/>
+                            <constraint id="118" firstItem="107" firstAttribute="bottom" secondItem="105" secondAttribute="bottom"/>
+                            <constraint id="134" firstItem="105" firstAttribute="centerY" secondItem="109" secondAttribute="centerY" constant="172"/>
+                            <constraint id="135" firstItem="105" firstAttribute="trailing" secondItem="109" secondAttribute="trailing" constant="75"/>
+                            <constraint id="136" firstItem="109" firstAttribute="leading" secondItem="105" secondAttribute="leading" constant="75"/>
+                            <constraint id="138" firstItem="108" firstAttribute="centerY" secondItem="109" secondAttribute="centerY" constant="30"/>
+                            <constraint id="139" firstItem="105" firstAttribute="trailing" secondItem="108" secondAttribute="trailing" constant="75"/>
+                            <constraint id="140" firstItem="108" firstAttribute="leading" secondItem="105" secondAttribute="leading" constant="75"/>
+                            <constraint id="142" firstItem="105" firstAttribute="centerY" secondItem="132" secondAttribute="centerY" constant="5"/>
+                            <constraint id="143" firstItem="105" firstAttribute="trailing" secondItem="132" secondAttribute="trailing" constant="75"/>
+                            <constraint id="144" firstItem="132" firstAttribute="leading" secondItem="105" secondAttribute="leading" constant="75"/>
+                            <constraint id="146" firstItem="130" firstAttribute="centerY" secondItem="132" secondAttribute="centerY" constant="30"/>
+                            <constraint id="147" firstItem="105" firstAttribute="trailing" secondItem="130" secondAttribute="trailing" constant="75"/>
+                            <constraint id="148" firstItem="130" firstAttribute="leading" secondItem="105" secondAttribute="leading" constant="75"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="AccountRegister" destination="105" id="104"/>
+                        <outlet property="BtnRegisterSubmit" destination="107" id="name-outlet-107"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="124" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="774" y="20"/>
         </scene>
     </scenes>
     <resources>

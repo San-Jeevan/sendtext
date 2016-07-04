@@ -6,6 +6,12 @@ namespace iOS
 {
     public partial class AccountMainViewController : UIViewController
     {
+        public static T CreateViewController<T>(string storyboardName, string viewControllerStoryBoardId = "") where T : UIViewController
+        {
+            var storyboard = UIStoryboard.FromName(storyboardName, null);
+                        return string.IsNullOrEmpty(viewControllerStoryBoardId) ? (T)storyboard.InstantiateInitialViewController() : (T)storyboard.InstantiateViewController(viewControllerStoryBoardId);
+                   }
+
         public AccountMainViewController(IntPtr handle) : base(handle)
         {
             
@@ -21,12 +27,19 @@ namespace iOS
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-
-            // Perform any additional setup after loading the view, typically from a nib.
+            AccountMain.BackgroundColor = UIColor.FromPatternImage(UIImage.FromFile("LoginBg.jpg"));
+          
         }
 
-        partial void UIButton11_TouchUpInside(UIButton sender)
+
+        partial void BtnRegister_TouchUpInside(UIButton sender)
         {
+             var newVC = CreateViewController<AccountRegisterViewController>("Login", "AccountRegisterViewController");
+           
+            newVC.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+            newVC.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+            
+            PresentViewController(newVC, true, null);
         }
 
         partial void Btnlogin_TouchUpInside(UIButton sender)

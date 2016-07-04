@@ -64,7 +64,7 @@ namespace iOS
 
                 var newVC = CreateViewController<AddParticipantController>("AddParticipant", "AddParticipantController");
 
-                newVC.ModalPresentationStyle = UIModalPresentationStyle.FormSheet;
+                newVC.ModalPresentationStyle = UIModalPresentationStyle.CurrentContext;
                 newVC.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
                
                 PresentViewController(newVC, true, ModalShow);
