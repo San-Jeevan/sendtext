@@ -33,12 +33,10 @@
     <Compile Include="app.js" />
     <Compile Include="configProd.js" />
     <Compile Include="config.js" />
-    <Compile Include="config\auth.js" />
-    <Compile Include="config\redisHelper.js" />
-    <Compile Include="config\tokenHelper.js" />
     <Compile Include="db\dbcore.js" />
     <Compile Include="db\queryStrings.js" />
     <Compile Include="domain\responses.js" />
+    <Compile Include="redis\rediscore.js" />
     <Compile Include="www\color-box\color-js.js" />
     <Compile Include="www\color-box\farbtastic\farbtastic.js" />
     <Compile Include="www\js\bootstrap.min.js" />
@@ -54,9 +52,7 @@
     <Compile Include="www\js\plugins.js" />
     <Compile Include="www\js\SendTxt.js" />
     <Compile Include="www\js\sticky.js" />
-    <Content Include="2_www.gpsfix.io.crt" />
-    <Content Include="2_www.gpsfix.io.key" />
-    <Content Include="APNcert.p12" />
+    <Compile Include="www\plugin\remodal.min.js" />
     <Content Include="package.json" />
     <Content Include="www\blog.html" />
     <Content Include="www\color-box\background\bg-image.jpg" />
@@ -89,7 +85,6 @@
     <Content Include="www\css\fonts\LineIcon.ttf" />
     <Content Include="www\css\fonts\LineIcon.woff" />
     <Content Include="www\css\style.css" />
-    <Content Include="www\css\swipebox.css" />
     <Content Include="www\images\clients-1.png" />
     <Content Include="www\images\clients-2.png" />
     <Content Include="www\images\clients-3.png" />
@@ -314,15 +309,17 @@
     <Content Include="www\php\twitter.txt" />
     <Content Include="www\php\twitteroauth\OAuth.php" />
     <Content Include="www\php\twitteroauth\twitteroauth.php" />
+    <Content Include="www\plugin\remodal-default-theme.css" />
+    <Content Include="www\plugin\remodal.css" />
     <Content Include="www\post.html" />
     <Content Include="www\pricing-tables.html" />
     <Content Include="www\project.html" />
     <Content Include="www\subscriptions.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="config\" />
     <Folder Include="db\" />
     <Folder Include="domain\" />
+    <Folder Include="redis\" />
     <Folder Include="www\" />
     <Folder Include="www\color-box\" />
     <Folder Include="www\color-box\background\" />
@@ -335,6 +332,7 @@
     <Folder Include="www\js\" />
     <Folder Include="www\php\" />
     <Folder Include="www\php\twitteroauth\" />
+    <Folder Include="www\plugin\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

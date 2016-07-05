@@ -1,17 +1,14 @@
 {
-  "name": "gpsnode",
-  "description": "gpsfix.io",
-  "version": "0.0.2",
+  "name": "sendtxt",
+  "description": "sendtxt",
+  "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "apn": "^1.7.6",
     "async": "^2.0.0-rc.5",
-    "bcryptjs": "^2.3.0",
     "body-parser": "~1.0.2",
-    "chance": "^1.0.3",
     "express": "~4.1.1",
+    "file-stream-rotator": "0.0.6",
     "json": "0.0.14",
-    "moniker-native": "^0.1.6",
     "morgan": "~1.0.1",
     "mssql": "^3.3.0",
     "redis": "~0.12.1"

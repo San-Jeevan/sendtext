@@ -7,13 +7,15 @@
         <meta name="author" content="NexThemes" />
         <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-        <link href="css/swipebox.css" rel="stylesheet" />
+      
         <link href="css/bootstrap.min.css" rel="stylesheet" />
         <link href="css/style.css" rel="stylesheet" />
         <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <link href="color-box/color-style.css" rel="stylesheet" />
         <link href="color-box/farbtastic/farbtastic.css" rel="stylesheet" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="plugin/remodal.css">
+        <link rel="stylesheet" href="plugin/remodal-default-theme.css">
     </head>
     <body>
         <div class="box-wide">
@@ -234,7 +236,48 @@
           
                 </div>
             </footer>
+        <div data-remodal-id="modal">
+            <button data-remodal-action="close" class="remodal-close"></button>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="progress-bar progress-bar-striped active popupProgressBar " role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                            <span id="popuptimeleft">10 minutes left</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <span id="popupcodespan" class="popupCodeSpan"></span> <i data-toggle="tooltip" title="This is the secret code the receiver must type in the App" data-placement="right" class="ion-ios-information-outline largeIcon"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12"></div>
+                </div>
+            </div>
+        </div>
 
+            <div data-remodal-id="modalrecv">
+                <button data-remodal-action="close" class="remodal-close"></button>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                          
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <form>
+                                <textarea rows="15" id="popuptextarea" placeholder="" class="custominput" name="contact-message"></textarea>
+                                <button href="" onclick="event.preventDefault();" id="btnCopy" class="button-3 button-4" data-clipboard-action="copy" data-clipboard-target="#popuptextarea">Copy to clipboard</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12"></div>
+                    </div>
+                </div>
+            </div>
         </div>
         <!-- start scripts -->
         <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
@@ -242,13 +285,13 @@
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script src="js/plugins.js" type="text/javascript"></script>
         <script src="js/sticky.js" type="text/javascript"></script>
-        <script src="js/options.js" type="text/javascript"></script>
-        <script src="color-box/color-js.js" type="text/javascript"></script>
-        <script src="color-box/farbtastic/farbtastic.js" type="text/javascript"></script>
+    <script src="js/options.js" type="text/javascript"></script>
+        <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.12/dist/clipboard.min.js"></script>
         <script src="js/SendTxt.js" type="text/javascript"></script>
     <!-- end scripts -->
-
+        <script src="plugin/remodal.min.js" type="text/javascript"></script>
     <script>
+       
     </script>
     </body>
 </html>

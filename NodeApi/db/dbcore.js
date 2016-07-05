@@ -32,61 +32,8 @@ sql.connect(config.sql.uri).then(function () {
         });
     };
     
-    
-    //AUTH USER
-    exports.authenticateuser = function (user, password, callback) {
-        new sql.Request().query(util.format(sqlstrings.authUser,user)).then(function (recordset) {
-            if(recordset.length==0) callback(false, recordset);
-            bcrypt.compare(password, recordset[0].PasswordHash, function (err, res) {
-                callback(res, recordset);
-            });
-        }).catch(function (err) {
-            callback(false, []);
-        });
-    };
-    
-    
-    //CONTACTS WITH APP
-    exports.getcontacts = function (contacts, callback) {
-        var contactlist = contacts.join(", ");
-        
-        new sql.Request().query(util.format(sqlstrings.getContacts, contactlist)).then(function (recordset) {
-            callback(recordset);
-        }).catch(function (err) {
-            callback(err);
-        });
-    };
-    
-    
-    //IsRegistered
-    exports.isregistered = function (params, callback) {
-        var FCMId = params.FCMId;
-        var APNId = params.APNId;
-        var PhoneNumber = params.PhoneNumber;
-        var querystring = sqlstrings.isregisteredApn;
+  
 
-        if (!FCMId) {
-            querystring = util.format(sqlstrings.isregisteredFcm, PhoneNumber, FCMId);
-        }
-        else if (!APNId) {
-            querystring = util.format(sqlstrings.isregisteredApn, PhoneNumber, APNId);
-        }
-        else {
-            querystring = util.format(sqlstrings.isregistered, PhoneNumber);
-        }
-        
-        new sql.Request().query(querystring).then(function (recordset) {
-            if (recordset.Length !== 0) {
-                callback(true);
-                return;
-            }
-            callback(false);
-        }).catch(function (err) {
-            callback(false);
-        });
-    };
-    
-    
     
     //CREATE ANON USER
     exports.createanonuser = function (params, callback) {

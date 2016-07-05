@@ -1935,6 +1935,28 @@ form {
   color: #fff;
   border: 2px solid #fff;
 }
+
 #inputSend {
     resize: vertical;
+}
+
+.largeIcon {
+    width: 50px;
+    color: #1ab0db;
+    font-size: 24pt;
+}
+
+.popupCodeSpan {
+    font-size: 32pt;
+    color: red;
+}
+
+.popupProgressBar {
+    margin-bottom: 25px;
+}
+
+.button-4:hover {
+  background: black;
+  color: white;
+  border: 2px solid #fff;
 }
