@@ -24,33 +24,11 @@ var options = {
 //    console.log('Started!');
 //});
 
-app.set('trust proxy', '162.158.222.62')
+
 app.listen(1234);
 
 app.use(bodyParser());
 app.use(morgan());
-
-
-
-// APN
-var apnoptions = {
-    pfx: 'APNcert.p12',
-    passphrase: 'heyhey',
-    gateway: 'gateway.sandbox.push.apple.com',
-    production: false
-};
-var apnConnection = new apn.Connection(apnoptions);
-
-apnConnection.addListener('timeout', function (err) {
-    console.log('timeout', err);
-});
-
-apnConnection.addListener('connected', function (openSockets) {
-    console.log('connected', openSockets);
-});
-
-apnConnection.addListener('error', console.error);
-apnConnection.addListener('socketError', console.error);
 
 
 
@@ -70,40 +48,6 @@ app.all('*', function (req, res, next) {
 
 
 
-
-
-app.get('/api/sendtoken/:token', function (req, res) {
-    var token = req.params.token;
-    if (token == null) return res.json('Empty token');
-    var myDevice = new apn.Device(token);
-    
-    var note = new apn.Notification();
-    
-    note.expiry = Math.floor(Date.now() / 1000) + 3600; // Expires 1 hour from now.
-    note.alert = "You have a new message";
-    note.payload = { 'messageFrom': 'Caroline' };
-    
-    apnConnection.pushNotification(note, myDevice);
-    return res.json(note);
-});
-
-
-
-
-app.get('/about', function (req, res) {
-    return res.json('hey');
-});
-
-
-app.post('/api/isitregistered', function (req, res) {
-    var parameters = req.body;
-    if (parameters.length == 0) return res.json("");
-    
-    
-    db.isregistered(parameters, function (response) {
-        return res.json(response);
-    });
-});
 
 
 app.post('/api/createanonuser', function (req, res) {
@@ -136,52 +80,7 @@ app.post('/api/getcontacts', function (req, res) {
 });
 
 
-app.post('/api/signin', function (req, res) {
-    db.authenticateuser(req.body.user, req.body.pass, function (result, authuser) {
-        if (result) {
-            var userData = authuser[0];
-            delete userData.PasswordHash;
-            delete userData.PasswordSalt;
-            auth.createAndStoreToken(userData, 60 * 60 * 48, function (err, token) {
-                if (err) {
-                    return res.send(400);
-                }
-                return res.send(200, token);
-            });
-        }
-        else res.send(200, "wrong user/pw");
-    });
 
-});
-
-
-app.get('/api/createsession', auth.verify, function (req, res) {
-    if (req._user) {
-        db.createsession(function (response) {
-            return res.json(response);
-        });
-    }
-});
-
-
-
-app.get('/api/createuser', function (req, res) {
-    db.createuser(function (response) {
-        return res.json(response);
-    });
-});
-
-app.get('/api/expire', function (req, res) {
-    auth.expireToken(req.headers, function (err, success) {
-        if (err) {
-            console.log(err);
-            return res.send(401);
-        }
-        
-        if (success) res.send(200);
-        else res.send(401);
-    });
-});
 
 app.get('/api/getsession/:session', function (req, res) {
     db.getsession(req.params.session, function (response) {
