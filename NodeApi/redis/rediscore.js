@@ -103,6 +103,8 @@ exports.startSession = function (data, callback) {
 //GETSESSION
 exports.getSession = function (secretkey, callback) {
     var response;
+    secretkey = secretkey.replace(/ /g, "");
+
     if (secretkey == null || secretkey.length!==6) {
         response = new AbstractResponse(false, "Code is empty or not 6 digits", null);
         callback(response);

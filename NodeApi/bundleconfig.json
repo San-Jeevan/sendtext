@@ -1,0 +1,23 @@
+[
+  {
+    "outputFileName": "www/js/SendTxt.min.js",
+    "inputFiles": [
+      "www/js/SendTxt.js"
+    ]
+  },
+  {
+    "outputFileName": "www/js/jquery-2.1.4.min.min.js",
+    "inputFiles": [
+      "www/js/jquery-2.1.4.min.js"
+    ]
+  },
+  {
+    "outputFileName": "www/js/bundleTESTign.js",
+    "inputFiles": [
+      "www/js/sticky.js",
+      "www/js/SendTxt.js",
+      "www/js/plugins.js",
+      "www/js/options.js"
+    ]
+  }
+]

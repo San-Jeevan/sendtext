@@ -1,27 +1,33 @@
-var FileStreamRotator = require('file-stream-rotator');
+
 var express = require('express');
 var fs = require('fs');
 var app = express();
 var bodyParser = require('body-parser');
-var morgan = require('morgan');
+
 var config = require('./config.js');
 var PORT = config.web.port;
 var rediscore = require('./redis/rediscore.js');
 var path = require('path');
+var winston = require('winston');
 
 var logDirectory = path.join(__dirname, 'log');
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 
-var accessLogStream = FileStreamRotator.getStream({
-    date_format: 'YYYYMMDD',
-    filename: path.join(logDirectory, 'access-%DATE%.log'),
-    frequency: 'daily',
-    verbose: true
+
+
+winston.add(winston.transports.File, {
+    filename: path.join(logDirectory, 'accesslog.log'),
+    json: false,
+    maxsize: '10000',
+    maxFiles: '100',
+    timestamp: true,
+    level: 'silly'
 });
+//winston.remove(winston.transports.Console);
 
 app.listen(1234);
 app.use(bodyParser());
-app.use(morgan('combined', { stream: accessLogStream }));
+
 
 
 // API ENDPOINTS
@@ -41,6 +47,7 @@ app.all('*', function (req, res, next) {
 
 
 app.post('/api/createSession', function (req, res) {
+    winston.info('CREATESESSION');
     var parameters = req.body;
     if (parameters.length === 0) return res.json("");
     rediscore.startSession(parameters.data, function (response) {

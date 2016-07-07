@@ -179,7 +179,7 @@ a {
   position: relative;
 }
 .header-v1 .header-text {
-  padding: 200px 0;
+  padding: 0px 0;
   position: relative;
   z-index: 2;
 }
@@ -189,6 +189,7 @@ a {
   margin: 0 auto 40px;
   color: #fff;
   font-weight: 200;
+   padding: 100px 0;
 }
 .header-v1 .header-text h4 {
   font-size: 19px;
@@ -1959,4 +1960,34 @@ form {
   background: black;
   color: white;
   border: 2px solid #fff;
+}
+
+
+.sendcodeinput {
+    width: 140px;
+    border: 1px solid #e2ebf0;
+    border-radius: 3px;
+    padding: 5px;
+    outline: none;
+    font-size: 32px;
+    color: red;
+    text-align: center;
+}
+
+.sendcodeinput:focus {
+      border: 1px solid #1ab0db;
+}
+
+
+.button-5 {
+  color: #fff;
+  font-size: 24px;
+  text-transform: uppercase;
+    padding: 11px 20px;
+  border: 3px solid #fff;
+  border-radius: 3px;
+  font-weight: 600;
+  display: inline-block;
+  background: #1ab0db;
+  border: 2px solid #1ab0db;
 }

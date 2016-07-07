@@ -1,17 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="..\packages\Xamarin.Build.Download.0.2.1\build\Xamarin.Build.Download.props" Condition="Exists('..\packages\Xamarin.Build.Download.0.2.1\build\Xamarin.Build.Download.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
-    <ProjectGuid>{4B9D0A98-0364-416B-ADB1-099033861BDC}</ProjectGuid>
+    <ProjectGuid>{FD2C80C2-A7D2-409C-9B53-0CBAF6748880}</ProjectGuid>
     <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Exe</OutputType>
     <RootNamespace>iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>iOS</AssemblyName>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -25,11 +22,6 @@
     <MtouchArch>i386</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignKey>iPhone Developer: Sangeepan Sivagnanasuntharam (ZNBLX7A9XP)</CodesignKey>
-    <CodesignProvision>3d5e1f37-0a62-4901-bdaf-cdfe3fe0ff3d</CodesignProvision>
-    <CodesignEntitlements />
-    <CodesignResourceRules />
-    <CodesignExtraArgs />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -52,9 +44,9 @@
     <ConsolePause>false</ConsolePause>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignKey>iPhone Developer: Sangeepan Sivagnanasuntharam (ZNBLX7A9XP)</CodesignKey>
+    <CodesignKey>iPhone Developer</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignProvision>3d5e1f37-0a62-4901-bdaf-cdfe3fe0ff3d</CodesignProvision>
+    <CodesignProvision />
     <CodesignResourceRules />
     <CodesignExtraArgs />
   </PropertyGroup>
@@ -95,60 +87,23 @@
     <CodesignKey>iPhone Distribution</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AccountLoginViewController.cs" />
-    <Compile Include="AccountLoginViewController.designer.cs">
-      <DependentUpon>AccountLoginViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AccountMainViewController.cs" />
-    <Compile Include="AccountMainViewController.designer.cs">
-      <DependentUpon>AccountMainViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AccountRegisterViewController.cs" />
-    <Compile Include="AccountRegisterViewController.designer.cs">
-      <DependentUpon>AccountRegisterViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="APN\APNService.cs" />
-    <Compile Include="GpsService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="REST\RESTService.cs" />
-    <Compile Include="Splashscreen.cs" />
-    <Compile Include="Splashscreen.designer.cs">
-      <DependentUpon>Splashscreen.cs</DependentUpon>
-    </Compile>
-    <Compile Include="AddParticipantController.cs" />
-    <Compile Include="AddParticipantController.designer.cs">
-      <DependentUpon>AddParticipantController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Table\AddParticpantTableSource.cs" />
-    <InterfaceDefinition Include="AccountRegisterViewController.xib" />
-    <InterfaceDefinition Include="AccountLoginViewController.xib" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
-    <InterfaceDefinition Include="AddParticipant.storyboard">
-      <SubType>Designer</SubType>
-    </InterfaceDefinition>
-    <InterfaceDefinition Include="Login.storyboard">
-      <SubType>Designer</SubType>
-    </InterfaceDefinition>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
-    <InterfaceDefinition Include="Splashscreen.storyboard" />
-    <InterfaceDefinition Include="SandboxStory.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MapViewController.cs" />
-    <Compile Include="MapViewController.designer.cs">
-      <DependentUpon>MapViewController.cs</DependentUpon>
+    <Compile Include="MainViewController.cs" />
+    <Compile Include="MainViewController.designer.cs">
+      <DependentUpon>MainViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="NavigationCreateController.cs" />
-    <Compile Include="NavigationCreateController.designer.cs">
-      <DependentUpon>NavigationCreateController.cs</DependentUpon>
+    <Compile Include="AboutViewController.cs" />
+    <Compile Include="AboutViewController.designer.cs">
+      <DependentUpon>AboutViewController.cs</DependentUpon>
     </Compile>
     <InterfaceDefinition Include="Main.storyboard">
       <SubType>Designer</SubType>
@@ -170,99 +125,20 @@
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="FlyoutNavigation">
-      <HintPath>..\Components\flyoutnavigation-1.5.1\lib\ios-unified\FlyoutNavigation.dll</HintPath>
-    </Reference>
-    <Reference Include="Google.Maps, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.Google.iOS.Maps.1.13.1.0\lib\Xamarin.iOS10\Google.Maps.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.SignalR.Client">
-      <HintPath>..\Components\signalr-2.1.2.2\lib\ios-unified\Microsoft.AspNet.SignalR.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="MonoTouch.Dialog-1" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\Components\signalr-2.1.2.2\lib\ios-unified\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\RestSharp.105.2.3\lib\Xamarin.iOS10\RestSharp.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\Components\signalr-2.1.2.2\lib\ios-unified\System.Net.Http.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\Components\signalr-2.1.2.2\lib\ios-unified\System.Net.Http.Primitives.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
-    <Reference Include="Xamarin.Mobile">
-      <HintPath>..\Components\xamarin.mobile-0.7.7\lib\ios-unified\Xamarin.Mobile.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />
-    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\MainWithTextLargest.png" />
     <BundleResource Include="Resources\Icon.png" />
     <BundleResource Include="Resources\Icon%402x.png" />
     <BundleResource Include="Resources\Icon-60%402x.png" />
     <BundleResource Include="Resources\Icon-Small.png" />
     <BundleResource Include="Resources\Icon-Small%402x.png" />
     <BundleResource Include="Resources\Icon-Small-40%402x.png" />
-    <BundleResource Include="Resources\favico260.png" />
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\Menu-50.png" />
-    <BundleResource Include="Resources\Menu-20.png" />
-    <BundleResource Include="Resources\Default-667h%402x.png" />
-    <BundleResource Include="Resources\Icon-App%403x.png" />
-    <BundleResource Include="Resources\Splashscreen.png" />
-    <BundleResource Include="Resources\LoginBg.jpg" />
-    <BundleResource Include="Resources\Plus-20.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <XamarinComponentReference Include="flyoutnavigation">
-      <Visible>False</Visible>
-      <Version>1.5.1</Version>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="googleiosmaps">
-      <Visible>False</Visible>
-      <Version>1.13.1.0</Version>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="restsharp">
-      <Visible>False</Visible>
-      <Version>105.2.3</Version>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="signalr">
-      <Visible>False</Visible>
-      <Version>2.1.2.2</Version>
-    </XamarinComponentReference>
-    <XamarinComponentReference Include="xamarin.mobile">
-      <Visible>False</Visible>
-      <Version>0.7.7</Version>
-    </XamarinComponentReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{3a19eb86-d25c-434e-8a32-38156ec02eca}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Common\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Xamarin.Build.Download.0.2.1\build\Xamarin.Build.Download.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Build.Download.0.2.1\build\Xamarin.Build.Download.props'))" />
-    <Error Condition="!Exists('..\packages\Xamarin.Build.Download.0.2.1\build\Xamarin.Build.Download.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Build.Download.0.2.1\build\Xamarin.Build.Download.targets'))" />
-    <Error Condition="!Exists('..\packages\Xamarin.Google.iOS.Maps.1.13.1.0\build\Xamarin.Google.iOS.Maps.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Xamarin.Google.iOS.Maps.1.13.1.0\build\Xamarin.Google.iOS.Maps.targets'))" />
-  </Target>
-  <Import Project="..\packages\Xamarin.Build.Download.0.2.1\build\Xamarin.Build.Download.targets" Condition="Exists('..\packages\Xamarin.Build.Download.0.2.1\build\Xamarin.Build.Download.targets')" />
-  <Import Project="..\packages\Xamarin.Google.iOS.Maps.1.13.1.0\build\Xamarin.Google.iOS.Maps.targets" Condition="Exists('..\packages\Xamarin.Google.iOS.Maps.1.13.1.0\build\Xamarin.Google.iOS.Maps.targets')" />
 </Project>
